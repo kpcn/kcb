@@ -1,1 +1,1 @@
-## 📝 KC Mdx Blog
+## 📝 KC's Blog

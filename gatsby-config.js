@@ -8,7 +8,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
-    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
@@ -17,6 +16,7 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -50,20 +50,18 @@ module.exports = {
         path: `${__dirname}/content/blog/`,
       },
     },
-    `gatsby-remark-images`,
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
+        plugins: ['gatsby-remark-prismjs'],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
-              maxWidth: 590,
+              classPrefix: ['language-js', 'language-bash'],
             },
           },
-          `gatsby-remark-autolink-headers`,
         ],
       },
     },

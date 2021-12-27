@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Header = () => {
   return (
-    <div className="sticky top-0 px-8 py-6 shadow-sm bg-gray-50">
+    <div className="sticky top-0 z-10 px-8 py-6 shadow-sm bg-gray-50">
       <div className="flex justify-between w-full">
         <div className="space-x-2 text-lg font-thin tracking-wide uppercase ">
           <button className="italic font-light uppercase border-b border-gray-500 border-dashed">

@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
+
+import shortcodes from '../../mdx-shortcodes';
 
 const BlogPost = ({ data }) => {
   return (
@@ -15,7 +19,16 @@ const BlogPost = ({ data }) => {
               <h1 className="text-xl tracking-wide">
                 {data.mdx.frontmatter.title}
               </h1>
-              <MDXRenderer>{data.mdx.body}</MDXRenderer>
+              <GatsbyImage
+                image={getImage(
+                  data.mdx.frontmatter.hero_image.childImageSharp
+                    .gatsbyImageData
+                )}
+                alt={data.mdx.frontmatter.hero_image.hero_image_desc}
+              />
+              <MDXProvider components={shortcodes}>
+                <MDXRenderer>{data.mdx.body}</MDXRenderer>
+              </MDXProvider>
             </article>
           </div>
         </div>
@@ -30,7 +43,15 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
-        date(formatString: "MMMM D, YYYY")
+        publishedAt(formatString: "MMMM DD, YYYY")
+        hero_image {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        hero_image_desc
+        hero_image_credited_name
+        hero_image_credited_link
       }
       body
     }
