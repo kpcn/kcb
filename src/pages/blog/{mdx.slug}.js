@@ -24,7 +24,7 @@ const BlogPost = ({ data }) => {
                   data.mdx.frontmatter.hero_image.childImageSharp
                     .gatsbyImageData
                 )}
-                alt={data.mdx.frontmatter.hero_image.hero_image_desc}
+                alt={data.mdx.frontmatter.hero_image_desc}
               />
               <MDXProvider components={shortcodes}>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>

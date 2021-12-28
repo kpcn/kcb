@@ -1,40 +1,21 @@
 import * as React from 'react';
+import { Link } from 'gatsby';
+import PopoverFilters from './PopoverFilters';
+import ReadingModeSwitchBoard from './ReadingModeSwitchBoard';
 
 const Header = () => {
   return (
     <div className="sticky top-0 z-10 px-8 py-6 shadow-sm bg-gray-50">
       <div className="flex justify-between w-full">
-        <div className="space-x-2 text-lg font-thin tracking-wide uppercase ">
-          <button className="italic font-light uppercase border-b border-gray-500 border-dashed">
-            All
-          </button>
+        <div className="flex space-x-2 text-lg font-thin tracking-wide uppercase ">
+          <PopoverFilters />
           <span>Posts</span>
         </div>
-        <div className="">
-          <button className="">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-6 h-6"
-            >
-              <line x1="4" y1="21" x2="4" y2="14" />
-              <line x1="4" y1="10" x2="4" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12" y2="3" />
-              <line x1="20" y1="21" x2="20" y2="16" />
-              <line x1="20" y1="12" x2="20" y2="3" />
-              <line x1="1" y1="14" x2="7" y2="14" />
-              <line x1="9" y1="8" x2="15" y2="8" />
-              <line x1="17" y1="16" x2="23" y2="16" />
-            </svg>
-          </button>
+        <div className="flex space-x-3">
+          <div className="text-lg font-thin tracking-wide uppercase">
+            <Link to="/">Home</Link>
+          </div>
+          <ReadingModeSwitchBoard />
         </div>
       </div>
     </div>
