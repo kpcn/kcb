@@ -1,6 +1,5 @@
-import { graphql } from 'gatsby';
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import PostItem from '../components/PostItem';
@@ -8,16 +7,6 @@ import PostItem from '../components/PostItem';
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>KC's Blog</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Pushster&display=swap"
-          rel="stylesheet"
-        ></link>
-      </Helmet>
       <div className="flex w-full overflow-y-scroll bg-gray-900 grid-bg">
         <div className="w-7/12 bg-gray-50">
           <Header />
@@ -40,6 +29,7 @@ export const query = graphql`
         frontmatter {
           title
           publishedAt(formatString: "MMMM DD, YYYY")
+          tags
         }
         id
         slug

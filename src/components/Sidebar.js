@@ -12,17 +12,16 @@ const Sidebar = () => {
         siteMetadata {
           description
           name
-          siteUrl
           title
         }
       }
     }
   `);
-  const { name, siteUrl, description } = meta;
+  const { name, description } = meta;
   return (
     <div className="flex flex-col justify-end w-full grid-bg">
       <div className="flex flex-col mb-40 space-y-5">
-        <Avatar name={name} url={siteUrl} />
+        <Avatar name={name} />
         <p className="text-lg text-center font-pushster">{description}</p>
         <SocialLinks />
       </div>

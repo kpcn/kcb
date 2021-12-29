@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
-import kebabCase from 'lodash/kebabCase';
+import TagLink from './TagLink';
 
 const PopoverFilters = () => {
   const { state } = useLocation();
@@ -72,10 +72,10 @@ const PopoverFilters = () => {
                     </div>
                   </Link>
                   {group.map((tag) => (
-                    <Link
-                      to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                      key={tag.fieldValue}
-                      state={{
+                    <TagLink
+                      tagName={tag.fieldValue}
+                      totalCountByTag={tag.totalCount}
+                      linkState={{
                         activeTag: tag.fieldValue,
                         totalPosts: tag.totalCount,
                       }}
@@ -85,14 +85,7 @@ const PopoverFilters = () => {
                           ? 'hidden'
                           : ''
                       }
-                    >
-                      <div className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-medium text-justify text-gray-700 bg-gray-200 rounded-3xl">
-                        #{tag.fieldValue}{' '}
-                        <span className="px-1 text-sm text-white bg-gray-700 rounded-md">
-                          {tag.totalCount}
-                        </span>
-                      </div>
-                    </Link>
+                    />
                   ))}
                 </div>
               </Popover.Panel>

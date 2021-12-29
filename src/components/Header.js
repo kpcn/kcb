@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import PopoverFilters from './PopoverFilters';
-import ReadingModeSwitchBoard from './ReadingModeSwitchBoard';
 import { TiArrowBackOutline } from '@react-icons/all-files/ti/TiArrowBackOutline';
 import { navigate } from 'gatsby';
 import { useLocation } from '@reach/router';
+import PopoverFilters from './PopoverFilters';
 
 const Header = () => {
   const location = useLocation();
@@ -27,7 +26,6 @@ const Header = () => {
           <div className="text-lg font-thin tracking-wide uppercase">
             <Link to="/">Home</Link>
           </div>
-          <ReadingModeSwitchBoard />
         </div>
       </div>
     </div>
