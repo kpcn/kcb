@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.chartape.me',
-    title: "Chartape's Blog",
+    title: "KC's Blog",
     name: 'Ko Chan',
-    description: 'Just musing on the things I liked',
+    description: 'Just musing on the things I like, especially on Web Dev',
   },
   plugins: [
     'gatsby-plugin-sass',

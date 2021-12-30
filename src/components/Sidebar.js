@@ -22,7 +22,9 @@ const Sidebar = () => {
     <div className="flex flex-col justify-end w-full grid-bg">
       <div className="flex flex-col mb-40 space-y-5">
         <Avatar name={name} />
-        <p className="text-lg text-center font-pushster">{description}</p>
+        <p className="px-6 text-xl text-center text-slate-700 font-pushster">
+          {description}
+        </p>
         <SocialLinks />
       </div>
     </div>

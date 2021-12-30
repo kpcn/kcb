@@ -73,6 +73,7 @@ const PopoverFilters = () => {
                   </Link>
                   {group.map((tag) => (
                     <TagLink
+                      key={tag.fieldValue}
                       tagName={tag.fieldValue}
                       totalCountByTag={tag.totalCount}
                       linkState={{

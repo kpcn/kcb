@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { MDXProvider } from '@mdx-js/react'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { graphql } from 'gatsby'
-import Header from '../components/Header'
-import Layout from '../components/Layout'
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { graphql } from 'gatsby';
+import Header from '../components/Header';
+import Layout from '../components/Layout';
 
 import shortcodes from '../../src/mdx-shortcodes';
+import HeroImage from '../components/Articles/HeroImage';
 
 const BlogTemplate = ({ data }) => {
   return (
@@ -14,29 +14,33 @@ const BlogTemplate = ({ data }) => {
       <div className="flex w-full overflow-y-scroll bg-gray-900 grid-bg">
         <div className="w-7/12 bg-gray-50">
           <Header />
-          <div className="px-6 py-2 space-y-2 bg-gray-50">
-            <article>
-              <h1 className="text-xl tracking-wide">
+          <article className="px-8 pt-2 pb-10 space-y-2 bg-gray-50 font-firamono">
+            <header className="py-2">
+              <h1 className="pt-2 pb-6 text-2xl">
                 {data.mdx.frontmatter.title}
               </h1>
-              <GatsbyImage
-                image={getImage(
-                  data.mdx.frontmatter.hero_image.childImageSharp
-                    .gatsbyImageData
-                )}
-                alt={data.mdx.frontmatter.hero_image_desc}
-              />
+              {data.mdx.frontmatter.hero_image && (
+                <HeroImage
+                  imageSrc={
+                    data.mdx.frontmatter.hero_image.childImageSharp
+                      .gatsbyImageData
+                  }
+                  alt={data.mdx.frontmatter.hero_image_desc}
+                />
+              )}
+            </header>
+            <section className="w-full prose xl:prose-lg max-w-fit">
               <MDXProvider components={shortcodes}>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
               </MDXProvider>
-            </article>
-          </div>
+            </section>
+          </article>
         </div>
         <div className="w-5/12 "></div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query ($id: String) {
@@ -58,5 +62,4 @@ export const query = graphql`
   }
 `;
 
-
-export default BlogTemplate
+export default BlogTemplate;

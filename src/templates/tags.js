@@ -1,8 +1,8 @@
-import * as React from 'react';// import PropTypes from 'prop-types';
-import { graphql } from 'gatsby'
+import * as React from 'react'; // import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
-import Header from '../components/Header'
-import PostItem from '../components/PostItem'
+import Header from '../components/Header';
+import PostItem from '../components/PostItem';
 
 const Tags = ({ data }) => {
   return (
@@ -19,15 +19,15 @@ const Tags = ({ data }) => {
         <div className="w-5/12 "></div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const pageQuery = graphql`
   query ($tag: String) {
     allMdx(
       limit: 2000
-      sort: {fields: frontmatter___tags, order: DESC}
-      filter: {frontmatter: {tags: {in: [$tag]}}}
+      sort: { fields: frontmatter___tags, order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {
@@ -43,6 +43,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default Tags
+export default Tags;

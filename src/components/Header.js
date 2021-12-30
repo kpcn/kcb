@@ -18,13 +18,15 @@ const Header = () => {
           ) : (
             <>
               <PopoverFilters />
-              <span>Posts</span>
+              <span className="antialiased">Posts</span>
             </>
           )}
         </div>
         <div className="flex items-center space-x-3">
-          <div className="text-lg font-thin tracking-wide uppercase">
-            <Link to="/">Home</Link>
+          <div className="flex items-center space-x-2 text-lg font-thin tracking-wide uppercase">
+            <Link to="/" className="antialiased">
+              Home
+            </Link>
           </div>
         </div>
       </div>

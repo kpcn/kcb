@@ -4,8 +4,9 @@ module.exports = {
     extend: {
       fontFamily: {
         pushster: ['Pushster', 'cursive'],
+        firamono: ['Fira Mono', 'monospace'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
