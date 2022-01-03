@@ -50,6 +50,7 @@ module.exports = {
         path: `${__dirname}/content/blog/`,
       },
     },
+    'gatsby-remark-images',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -60,6 +61,12 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: ['language-js', 'language-bash'],
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 300,
             },
           },
         ],
