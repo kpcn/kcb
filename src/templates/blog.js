@@ -11,10 +11,10 @@ import HeroImage from '../components/Articles/HeroImage';
 const BlogTemplate = ({ data }) => {
   return (
     <Layout>
-      <div className="flex w-full overflow-y-scroll bg-gray-900 grid-bg">
-        <div className="w-7/12 bg-gray-50">
+      <div className="flex w-full">
+        <div className="xl:w-8/12 bg-gray-50">
           <Header />
-          <article className="px-8 pt-2 pb-10 space-y-2 bg-gray-50 font-firamono">
+          <article className="px-6 pt-2 pb-10 space-y-2 md:px-8 bg-gray-50 font-firamono">
             <header className="py-2">
               <h1 className="pt-2 pb-6 text-2xl">
                 {data.mdx.frontmatter.title}
@@ -36,7 +36,6 @@ const BlogTemplate = ({ data }) => {
             </section>
           </article>
         </div>
-        <div className="w-5/12 "></div>
       </div>
     </Layout>
   );

@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>KC's Blog</title>
@@ -15,11 +15,15 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         ></link>
       </Helmet>
-      <div className="sticky top-0 flex flex-row w-2/12 h-screen bg-gradient-to-tr from-cyan-400 to-blue-500">
-        <Sidebar />
+      <div className="flex flex-col h-screen  lg:flex-row">
+        <div className="flex order-2 w-full lg:order-1 lg:top-0 lg:h-screen xl:w-3/12 2xl:w-2/12 lg:w-3/12 bg-gradient-to-tr from-cyan-400 to-blue-500">
+          <Sidebar />
+        </div>
+        <main className="flex-1 order-1 lg:flex lg:overflow-y-scroll lg:order-2 lg:w-9/12 xl:w-9/12 2xl:w-10/12 xl:bg-gray-900 grid-bg">
+          {children}
+        </main>
       </div>
-      <main className="flex w-10/12 overflow-hidden">{children}</main>
-    </div>
+    </>
   );
 };
 
