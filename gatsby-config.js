@@ -2,8 +2,13 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.chartape.me',
     title: "KC's Blog",
-    name: 'Ko Chan',
+    author: 'Ko Chan',
     description: 'Just musing on the things I like, especially on Web Dev',
+    socialHandles: {
+      github: 'kpcn',
+      codesandbox: 'kpcn',
+      twitter: 'kchancnk',
+    },
   },
   plugins: [
     'gatsby-plugin-sass',
