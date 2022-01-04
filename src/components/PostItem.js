@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { BsTag } from '@react-icons/all-files/bs/BsTag';
+import { AiOutlineCalendar } from '@react-icons/all-files/ai/AiOutlineCalendar';
+import { AiOutlineFieldTime } from '@react-icons/all-files/ai/AiOutlineFieldTime';
 import { Link } from 'gatsby';
+import Tags from './Tags';
 
 const PostItem = ({ post }) => {
   return (
@@ -9,24 +11,24 @@ const PostItem = ({ post }) => {
       className="flex flex-col w-full px-3 py-2 space-y-2 md:rounded-md hover:bg-gradient-to-t hover:from-white hover:to-slate-50 hover:shadow-sm"
     >
       <Link to={`/blog/${post.slug}`} className="cursor-pointer">
-        <h1 className="text-xl antialiased font-semibold tracking-wide text-gray-600 font-firamono mb-1">
+        <h1 className="mb-1 text-xl antialiased font-semibold tracking-wide text-gray-600 font-firamono">
           {post.frontmatter.title}
         </h1>
+        <div className="flex items-center py-1 text-gray-500 space-x-7">
+          <div className="flex items-center space-x-2">
+            <AiOutlineCalendar className="w-5 h-5" />
+            <span className="italic">{post.frontmatter.publishedAt}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <AiOutlineFieldTime className="w-5 h-5" />
+            <span className="italic">{post.fields.readingTime.text}</span>
+          </div>
+        </div>
         <p className="py-1 text-lg antialiased font-normal text-slate-700 font-firamono">
           {post.excerpt}
         </p>
       </Link>
-      <div className="flex py-1 pb-2 space-x-2 items-center">
-        <BsTag />
-        {post.frontmatter.tags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-block px-2 text-xs font-thin text-justify text-gray-700 bg-slate-50 rounded-md "
-          >
-            #<i className="uppercase">{tag}</i>
-          </span>
-        ))}
-      </div>
+      <Tags tags={post.frontmatter.tags} />
     </article>
   );
 };

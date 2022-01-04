@@ -8,7 +8,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <ContentWrapper>
-        {data.allMdx.nodes.map((node) => (
+        {data.allMdx.edges.map(({ node }) => (
           <PostItem key={node.id} post={node} />
         ))}
       </ContentWrapper>
@@ -19,16 +19,22 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
   query {
     allMdx(sort: { fields: frontmatter___publishedAt, order: DESC }) {
-      nodes {
-        frontmatter {
-          title
-          publishedAt(formatString: "MMMM DD, YYYY")
-          tags
+      edges {
+        node {
+          fields {
+            readingTime {
+              text
+            }
+          }
+          frontmatter {
+            title
+            tags
+            publishedAt(formatString: "MMMM DD, YYYY")
+          }
+          slug
+          id
+          excerpt
         }
-        id
-        slug
-        excerpt
-        timeToRead
       }
     }
   }

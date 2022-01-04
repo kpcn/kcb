@@ -2,23 +2,40 @@ import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
+import { AiOutlineCalendar } from '@react-icons/all-files/ai/AiOutlineCalendar';
+import { AiOutlineFieldTime } from '@react-icons/all-files/ai/AiOutlineFieldTime';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 
 import shortcodes from '../../src/mdx-shortcodes';
 import HeroImage from '../components/Articles/HeroImage';
+import Tags from '../components/Tags';
 
 const BlogTemplate = ({ data }) => {
   return (
     <Layout>
       <div className="flex w-full">
-        <div className="xl:w-8/12 bg-gray-50">
+        <div className="bg-white xl:w-8/12">
           <Header />
-          <article className="px-6 pt-2 pb-10 space-y-2 md:px-8 bg-gray-50 font-firamono">
+          <article className="flex-1 px-6 pt-2 pb-10 space-y-2 bg-white md:px-8 font-firamono">
             <header className="py-2">
-              <h1 className="pt-2 pb-6 text-2xl">
+              <h1 className="pt-2 pb-1 text-2xl">
                 {data.mdx.frontmatter.title}
               </h1>
+              <div className="flex items-center py-1 pb-4 text-gray-500 space-x-7">
+                <div className="flex items-center space-x-2">
+                  <AiOutlineCalendar className="w-5 h-5" />
+                  <span className="text-sm italic md:text-base">
+                    {data.mdx.frontmatter.publishedAt}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <AiOutlineFieldTime className="w-5 h-5" />
+                  <span className="text-sm italic md:text-base">
+                    {data.mdx.fields.readingTime.text}
+                  </span>
+                </div>
+              </div>
               {data.mdx.frontmatter.hero_image && (
                 <HeroImage
                   imageSrc={
@@ -29,11 +46,12 @@ const BlogTemplate = ({ data }) => {
                 />
               )}
             </header>
-            <section className="w-full prose xl:prose-lg max-w-fit">
+            <section className="w-full pb-6 prose xl:prose-lg max-w-fit">
               <MDXProvider components={shortcodes}>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
               </MDXProvider>
             </section>
+            <Tags tags={data.mdx.frontmatter.tags} />
           </article>
         </div>
       </div>
@@ -46,6 +64,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        tags
         publishedAt(formatString: "MMMM DD, YYYY")
         hero_image {
           childImageSharp {
@@ -55,6 +74,11 @@ export const query = graphql`
         hero_image_desc
         hero_image_credited_name
         hero_image_credited_link
+      }
+      fields {
+        readingTime {
+          text
+        }
       }
       body
     }

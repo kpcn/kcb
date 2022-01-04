@@ -1,5 +1,6 @@
 const path = require('path');
 const _ = require('lodash');
+const readingTime = require('reading-time');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
@@ -59,4 +60,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+};
+
+// Customized reading time for Mdx & Md files
+exports.onCreateNode = ({ actions, node }) => {
+  const { createNodeField } = actions;
+
+  const readingTimeOptions = {
+    wordsPerMinute: 200,
+    wordBound: function (c) {
+      return ' \n\r\t'.includes(c);
+    },
+  };
+
+  if (node.internal.type === 'Mdx') {
+    createNodeField({
+      name: 'readingTime',
+      node,
+      value: readingTime(node.rawBody, readingTimeOptions),
+    });
+  } else if (node.internal.type === 'MarkdownRemark') {
+    createNodeField({
+      name: 'readingTime',
+      node,
+      value: readingTime(node.rawMarkdownBody, readingTimeOptions),
+    });
+  }
 };

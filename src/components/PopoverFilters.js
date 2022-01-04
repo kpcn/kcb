@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
+import { AiOutlineCloseSquare } from '@react-icons/all-files/ai/AiOutlineCloseSquare';
 import TagLink from './TagLink';
 
 const PopoverFilters = () => {
@@ -51,44 +52,54 @@ const PopoverFilters = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-20 max-w-md px-5 pt-5 pb-4 mt-1 space-y-2 bg-white border border-gray-100 rounded-md shadow-md">
-                <div className="">
-                  <div className="text-sm font-normal">TAGS</div>
-                </div>
-                <div className="flex flex-wrap">
-                  <Link
-                    to="/"
-                    state={{ activeTag: 'All' }}
-                    className={
-                      state?.activeTag !== 'undefined'
-                        ? state?.activeTag?.toLowerCase() === 'all'
-                          ? 'hidden'
-                          : ''
-                        : 'hidden'
-                    }
-                  >
-                    <div className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-medium text-justify text-gray-700 bg-gray-200 rounded-3xl">
-                      #All
+              <Popover.Panel className="absolute z-20 max-w-md px-5 pt-5 pb-4 mt-1 mr-6 space-y-2 bg-white border border-gray-100 rounded-md shadow-md md:mr-0">
+                {({ close }) => (
+                  <>
+                    <div className="flex items-start justify-between">
+                      <div className="text-sm font-normal">TAGS</div>
+                      <button
+                        className="text-gray-500 hover:text-gray-700"
+                        onClick={() => close()}
+                      >
+                        <AiOutlineCloseSquare className="w-6 h-6" />
+                      </button>
                     </div>
-                  </Link>
-                  {group.map((tag) => (
-                    <TagLink
-                      key={tag.fieldValue}
-                      tagName={tag.fieldValue}
-                      totalCountByTag={tag.totalCount}
-                      linkState={{
-                        activeTag: tag.fieldValue,
-                        totalPosts: tag.totalCount,
-                      }}
-                      className={
-                        state?.activeTag?.toLowerCase() ===
-                        tag.fieldValue.toLowerCase()
-                          ? 'hidden'
-                          : ''
-                      }
-                    />
-                  ))}
-                </div>
+                    <div className="flex flex-wrap">
+                      <Link
+                        to="/"
+                        state={{ activeTag: 'All' }}
+                        className={
+                          state?.activeTag !== 'undefined'
+                            ? state?.activeTag?.toLowerCase() === 'all'
+                              ? 'hidden'
+                              : ''
+                            : 'hidden'
+                        }
+                      >
+                        <div className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-medium text-justify text-gray-700 bg-gray-200 rounded-3xl">
+                          #All
+                        </div>
+                      </Link>
+                      {group.map((tag) => (
+                        <TagLink
+                          key={tag.fieldValue}
+                          tagName={tag.fieldValue}
+                          totalCountByTag={tag.totalCount}
+                          linkState={{
+                            activeTag: tag.fieldValue,
+                            totalPosts: tag.totalCount,
+                          }}
+                          className={
+                            state?.activeTag?.toLowerCase() ===
+                            tag.fieldValue.toLowerCase()
+                              ? 'hidden'
+                              : ''
+                          }
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </Popover.Panel>
             </Transition>
           </>
