@@ -47,7 +47,9 @@ const BlogTemplate = ({ data }) => {
                     data.mdx.frontmatter.hero_image.childImageSharp
                       .gatsbyImageData
                   }
-                  alt={data.mdx.frontmatter.hero_image_desc}
+                  desc={data.mdx.frontmatter.hero_image_desc}
+                  name={data.mdx.frontmatter.hero_image_credited_name}
+                  link={data.mdx.frontmatter.hero_image_credited_link}
                 />
               )}
             </header>
