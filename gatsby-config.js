@@ -1,13 +1,19 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.chartape.me',
     title: "KC's Blog",
-    author: 'Ko Chan',
     description: 'Just musing on the things I like, especially on Web Dev',
+    siteUrl: 'https://kcnk.me',
+    author: 'Ko Chan',
+    image: 'https://kcnk.me/images/ko-chan.jpg',
     socialHandles: {
       github: 'kpcn',
       codesandbox: 'kpcn',
       twitter: 'kchancnk',
+    },
+    organization: {
+      name: "KC's Blog",
+      url: 'https://kcnk.me',
+      logo: 'https://kcnk.me/icons/icon-512x512.png',
     },
   },
   plugins: [
@@ -19,6 +25,10 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.png',
+        name: `Ko Chan's Blog`,
+        short_name: `KC's Blog`,
+        start_url: `/`,
+        display: `standalone`,
       },
     },
     'gatsby-plugin-image',

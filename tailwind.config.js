@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        pushster: ['Pushster', 'cursive'],
+        dacingscript: ['Dancing Script', 'cursive'],
         firamono: ['Fira Mono', 'monospace'],
       },
     },

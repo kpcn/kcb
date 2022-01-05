@@ -7,7 +7,7 @@ const Avatar = ({ name }) => {
     <div className="flex justify-center">
       <Link to="/">
         <StaticImage
-          src="../images/avatar.jpg"
+          src="../images/icon.png"
           width={100}
           height={100}
           imgClassName="rounded-full border-2 border-gray-200"

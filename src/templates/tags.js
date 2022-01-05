@@ -3,10 +3,12 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import PostItem from '../components/PostItem';
 import ContentWrapper from '../components/ContentWrapper';
+import Seo from '../components/Seo';
 
 const Tags = ({ data }) => {
   return (
     <Layout>
+      <Seo />
       <ContentWrapper>
         {data.allMdx.edges.map(({ node }) => (
           <PostItem key={node.id} post={node} />

@@ -7,12 +7,18 @@ const useSiteMetadata = () => {
         siteMetadata {
           title
           description
+          image
           author
           siteUrl
           socialHandles {
             github
             codesandbox
             twitter
+          }
+          organization {
+            name
+            url
+            logo
           }
         }
       }

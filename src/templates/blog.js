@@ -10,10 +10,15 @@ import Layout from '../components/Layout';
 import shortcodes from '../../src/mdx-shortcodes';
 import HeroImage from '../components/Articles/HeroImage';
 import Tags from '../components/Tags';
+import Seo from '../components/Seo';
 
 const BlogTemplate = ({ data }) => {
   return (
     <Layout>
+      <Seo
+        postData={{ ...data.mdx.frontmatter, slug: data.mdx.slug }}
+        isBlogPost
+      />
       <div className="flex w-full">
         <div className="bg-white xl:w-8/12">
           <Header />
@@ -66,6 +71,7 @@ export const query = graphql`
         title
         tags
         publishedAt(formatString: "MMMM DD, YYYY")
+        summary
         hero_image {
           childImageSharp {
             gatsbyImageData(placeholder: BLURRED)
@@ -75,6 +81,7 @@ export const query = graphql`
         hero_image_credited_name
         hero_image_credited_link
       }
+      slug
       fields {
         readingTime {
           text
