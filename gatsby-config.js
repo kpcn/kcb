@@ -4,7 +4,7 @@ module.exports = {
     description: 'Just musing on the things I like, especially on Web Dev',
     siteUrl: 'https://kcnk.me',
     author: 'Ko Chan',
-    image: 'https://kcnk.me/images/kcb-ws-img.jpg',
+    image: 'https://kcnk.me/images/kcb-ws-img.png',
     socialHandles: {
       github: 'kpcn',
       codesandbox: 'kpcn',
