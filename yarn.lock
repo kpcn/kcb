@@ -5513,6 +5513,11 @@ gatsby-page-utils@^2.4.0:
     lodash "^4.17.21"
     micromatch "^4.0.4"
 
+gatsby-plugin-disqus@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.3.tgz#c0ad7920860cf0f6f2d8ad256869b1d4591365ac"
+  integrity sha512-HjsMCGPt1qI/oryCw1NJjFS6XQ99eQmsXjrxxRi295sjlpvvcnNXlB11O7v4BbjNu2euqCY6XzK/fBkYJjjgCQ==
+
 gatsby-plugin-image@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-2.4.0.tgz#fd960393043e856eb70d998dc34ad96a738162a8"
