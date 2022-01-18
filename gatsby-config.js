@@ -74,14 +74,17 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-prismjs',
-            options: {
-              classPrefix: ['language-js', 'language-bash'],
-            },
           },
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 300,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
         ],
