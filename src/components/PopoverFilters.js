@@ -24,7 +24,7 @@ const PopoverFilters = () => {
       <Popover className="">
         {({ open }) => (
           <>
-            <Popover.Button className="">
+            <Popover.Button className="dark:text-slate-50">
               {state?.activeTag && state?.activeTag?.toLowerCase() !== 'all' ? (
                 <div className="relative mr-2">
                   {state?.totalPosts && (
@@ -52,13 +52,13 @@ const PopoverFilters = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-20 max-w-md px-5 pt-5 pb-4 mt-1 mr-6 space-y-2 bg-white border border-gray-100 rounded-md shadow-md md:mr-0">
+              <Popover.Panel className="absolute z-20 max-w-md px-5 pt-5 pb-4 mt-1 mr-6 space-y-2 bg-white rounded-md shadow-md md:mr-0 dark:bg-slate-300">
                 {({ close }) => (
                   <>
                     <div className="flex items-start justify-between">
-                      <div className="text-sm font-normal">TAGS</div>
+                      <div className="text-sm font-normal ">TAGS</div>
                       <button
-                        className="text-gray-500 hover:text-gray-700"
+                        className="text-gray-500 hover:text-gray-700 "
                         onClick={() => close()}
                       >
                         <AiOutlineCloseSquare className="w-6 h-6" />

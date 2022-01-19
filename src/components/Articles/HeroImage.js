@@ -9,7 +9,7 @@ const HeroImage = ({ imageSrc, desc, name, link }) => {
         alt={desc}
         imgClassName="rounded-lg"
       />
-      <span className="inline-block w-full text-sm italic font-thin text-center text-gray-400 ">
+      <span className="inline-block w-full text-sm italic font-thin text-center text-gray-400 dark:text-slate-400">
         {desc} by{' '}
         <a href={link} className="border-b border-gray-300 border-dashed">
           {name}

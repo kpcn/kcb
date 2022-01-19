@@ -26,14 +26,14 @@ const BlogTemplate = ({ data, location, pageContext }) => {
         isBlogPost
       />
       <div className="flex w-full">
-        <div className="bg-white xl:w-8/12">
+        <div className="bg-white xl:w-8/12 dark:bg-slate-600">
           <Header />
-          <article className="flex-1 px-6 pt-2 pb-10 space-y-2 bg-white md:px-8 font-firamono">
+          <article className="flex-1 px-6 pt-2 pb-10 space-y-2 bg-white md:px-8 font-firamono dark:bg-slate-600">
             <header className="py-2">
-              <h1 className="pt-2 pb-1 text-2xl">
+              <h1 className="pt-2 pb-1 text-2xl dark:text-slate-50">
                 {data.mdx.frontmatter.title}
               </h1>
-              <div className="flex items-center py-1 pb-4 text-gray-500 space-x-7">
+              <div className="flex items-center py-1 pb-4 text-gray-500 space-x-7 dark:text-slate-50">
                 <div className="flex items-center space-x-2">
                   <AiOutlineCalendar className="w-5 h-5" />
                   <span className="text-sm italic md:text-base">
@@ -59,7 +59,7 @@ const BlogTemplate = ({ data, location, pageContext }) => {
                 />
               )}
             </header>
-            <section className="w-full pb-6 prose xl:prose-lg max-w-fit">
+            <section className="w-full pb-6 prose xl:prose-lg max-w-fit dark:prose-invert">
               <MDXProvider components={shortcodes}>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
               </MDXProvider>
