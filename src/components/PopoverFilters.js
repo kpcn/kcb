@@ -32,12 +32,12 @@ const PopoverFilters = () => {
                       {state?.totalPosts}
                     </span>
                   )}
-                  <span className="pb-1 italic font-light uppercase border-b border-gray-500 border-dashed">
+                  <span className="pb-1 italic font-light uppercase border-b border-gray-500 border-dashed dark:border-white">
                     {state?.activeTag}
                   </span>
                 </div>
               ) : (
-                <span className="pb-1 italic font-light uppercase border-b border-gray-500 border-dashed">
+                <span className="pb-1 italic font-light uppercase border-b border-gray-500 border-dashed dark:border-white">
                   All
                 </span>
               )}
