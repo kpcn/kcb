@@ -7,12 +7,12 @@ import PopoverFilters from './PopoverFilters';
 import ModeToggler from './ModeToggler';
 
 const Header = () => {
-  const location = useLocation();
+  const { pathname, state } = useLocation();
   return (
     <div className="sticky top-0 z-10 py-6 pl-4 pr-6 shadow-sm dark:shadow-slate-600 md:px-8 bg-gray-50 dark:bg-slate-700">
       <div className="flex items-center justify-between w-full ">
         <div className="flex space-x-2 text-lg font-thin tracking-wide uppercase">
-          {location.pathname.match(/\/blog\//g) ? (
+          {pathname.match(/\/blog\//g) && state !== null ? (
             <button onClick={() => navigate(-1)}>
               <TiArrowBackOutline className="w-7 h-7 dark:text-slate-50" />
             </button>

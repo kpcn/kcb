@@ -2,7 +2,6 @@ import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
-import { Disqus } from 'gatsby-plugin-disqus';
 import { AiOutlineCalendar } from '@react-icons/all-files/ai/AiOutlineCalendar';
 import { AiOutlineFieldTime } from '@react-icons/all-files/ai/AiOutlineFieldTime';
 import Header from '../components/Header';
@@ -13,12 +12,7 @@ import HeroImage from '../components/Articles/HeroImage';
 import Tags from '../components/Tags';
 import Seo from '../components/Seo';
 
-const BlogTemplate = ({ data, location, pageContext }) => {
-  const disqusConfig = {
-    url: `${location.origin}${location.pathname}`,
-    identifier: pageContext.id,
-    title: data.mdx.frontmatter.title,
-  };
+const BlogTemplate = ({ data }) => {
   return (
     <Layout>
       <Seo
@@ -59,13 +53,12 @@ const BlogTemplate = ({ data, location, pageContext }) => {
                 />
               )}
             </header>
-            <section className="w-full pb-6 prose xl:prose-lg max-w-fit dark:prose-invert">
+            <section className="w-full pb-6 prose xl:prose-lg max-w-fit dark:prose-invert dark:prose-code:bg-slate-200 dark:prose-pre:bg-slate-200 ">
               <MDXProvider components={shortcodes}>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
               </MDXProvider>
             </section>
             <Tags tags={data.mdx.frontmatter.tags} />
-            <Disqus config={disqusConfig} className="py-6" />
           </article>
         </div>
       </div>

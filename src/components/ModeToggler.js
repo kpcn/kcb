@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { HiOutlineSun } from '@react-icons/all-files/hi/HiOutlineSun';
-import { HiOutlineMoon } from '@react-icons/all-files/hi/HiOutlineMoon';
+import { HiOutlineLightBulb } from '@react-icons/all-files/hi/HiOutlineLightBulb';
+import { IoMdBulb } from '@react-icons/all-files/io/IoMdBulb';
 import { ThemeContext } from '../utils/themeContext';
 
 const ModeToggler = () => {
@@ -20,9 +20,9 @@ const ModeToggler = () => {
     <>
       <button className="antialiased" onClick={handleThemeChange}>
         {theme === 'light' ? (
-          <HiOutlineMoon />
+          <HiOutlineLightBulb className="w-5 h-5" />
         ) : (
-          <HiOutlineSun className="dark:text-slate-50" />
+          <IoMdBulb className="dark:text-slate-50" />
         )}
       </button>
     </>
