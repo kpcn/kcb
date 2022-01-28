@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext({
-  theme: '',
+  theme: 'light',
   setTheme: (theme) => {
     this.theme = theme;
   },
