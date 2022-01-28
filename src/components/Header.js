@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Link } from 'gatsby';
 import { TiArrowBackOutline } from '@react-icons/all-files/ti/TiArrowBackOutline';
 import { navigate } from 'gatsby';

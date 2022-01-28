@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {

@@ -1,7 +1,10 @@
+const path = require('path');
+
 module.exports = {
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: "KC's Blog",
-    description: 'Just musing on the things I like, especially on Web Dev',
+    description: 'Some thoughts on the things I like, especially on Web Dev',
     siteUrl: 'https://kcnk.me',
     author: 'Ko Chan',
     image: 'https://kcnk.me/images/kc-img.png',
@@ -17,6 +20,19 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '@components': path.join(__dirname, 'src/components'),
+        '@shortcodes': path.join(__dirname, 'src/mdx-shortcodes'),
+        '@hooks': path.join(__dirname, 'src/hooks'),
+        '@images': path.join(__dirname, 'src/images'),
+        '@pages': path.join(__dirname, 'src/pages'),
+        '@templates': path.join(__dirname, 'src/templates'),
+        '@styles': path.join(__dirname, 'src/styles'),
+        '@utils': path.join(__dirname, 'src/utils'),
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
@@ -24,7 +40,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        icon: `src/images/icon.png`,
         name: `Ko Chan's Blog`,
         short_name: `KC's Blog`,
         start_url: `/`,

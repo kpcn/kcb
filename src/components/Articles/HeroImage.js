@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const HeroImage = ({ imageSrc, desc, name, link }) => {

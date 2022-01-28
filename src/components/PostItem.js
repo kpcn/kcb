@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { AiOutlineCalendar } from '@react-icons/all-files/ai/AiOutlineCalendar';
 import { AiOutlineFieldTime } from '@react-icons/all-files/ai/AiOutlineFieldTime';
 import { Link } from 'gatsby';

@@ -1,8 +1,7 @@
-import * as React from 'react';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
-const TagLink = ({ tagName, totalCountByTag, linkState, className }) => {
+function TagLink({ tagName, totalCountByTag, linkState, className }) {
   return (
     <Link
       to={`/tags/${kebabCase(tagName)}/`}
@@ -18,6 +17,6 @@ const TagLink = ({ tagName, totalCountByTag, linkState, className }) => {
       </div>
     </Link>
   );
-};
+}
 
 export default TagLink;

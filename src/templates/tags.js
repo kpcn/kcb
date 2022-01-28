@@ -1,9 +1,8 @@
-import * as React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
-import PostItem from '../components/PostItem';
-import ContentWrapper from '../components/ContentWrapper';
-import Seo from '../components/Seo';
+import Layout from '@components/Layout';
+import PostItem from '@components/PostItem';
+import ContentWrapper from '@components/ContentWrapper';
+import Seo from '@components/Seo';
 
 const Tags = ({ data }) => {
   return (
