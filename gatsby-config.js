@@ -2,7 +2,7 @@ module.exports = {
   jsxRuntime: 'automatic',
   siteMetadata: {
     title: "KC's Blog",
-    description: 'Just musing on the things I like, especially on Web Dev',
+    description: 'Some thoughts on the things I like, especially on Web Dev',
     siteUrl: 'https://kcnk.me',
     author: 'Ko Chan',
     image: 'https://kcnk.me/images/kc-img.png',
