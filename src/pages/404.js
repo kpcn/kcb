@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import { TiArrowBackOutline } from '@react-icons/all-files/ti/TiArrowBackOutline';
-import Layout from '../components/Layout';
-import ContentWrapper from '../components/ContentWrapper';
+import Layout from '@components/Layout';
+import ContentWrapper from '@components/ContentWrapper';
 
 const NotFoundPage = () => {
   return (

@@ -3,13 +3,13 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import { AiOutlineCalendar } from '@react-icons/all-files/ai/AiOutlineCalendar';
 import { AiOutlineFieldTime } from '@react-icons/all-files/ai/AiOutlineFieldTime';
-import Header from '../components/Header';
-import Layout from '../components/Layout';
+import Header from '@components/Header';
+import Layout from '@components/Layout';
 
-import shortcodes from '../../src/mdx-shortcodes';
-import HeroImage from '../components/Articles/HeroImage';
-import Tags from '../components/Tags';
-import Seo from '../components/Seo';
+import shortcodes from '@shortcodes';
+import HeroImage from '@components/Articles/HeroImage';
+import Tags from '@components/Tags';
+import Seo from '@components/Seo';
 
 const BlogTemplate = ({ data }) => {
   return (

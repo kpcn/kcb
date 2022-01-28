@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   jsxRuntime: 'automatic',
   siteMetadata: {
@@ -18,6 +20,19 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '@components': path.join(__dirname, 'src/components'),
+        '@shortcodes': path.join(__dirname, 'src/mdx-shortcodes'),
+        '@hooks': path.join(__dirname, 'src/hooks'),
+        '@images': path.join(__dirname, 'src/images'),
+        '@pages': path.join(__dirname, 'src/pages'),
+        '@templates': path.join(__dirname, 'src/templates'),
+        '@styles': path.join(__dirname, 'src/styles'),
+        '@utils': path.join(__dirname, 'src/utils'),
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
