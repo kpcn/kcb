@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
-export const ThemeContext = React.createContext({
+export const ThemeContext = createContext({
   theme: '',
   setTheme: (theme) => {
     this.theme = theme;

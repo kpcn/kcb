@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { HiOutlineLightBulb } from '@react-icons/all-files/hi/HiOutlineLightBulb';
 import { IoMdBulb } from '@react-icons/all-files/io/IoMdBulb';
 import { ThemeContext } from '../utils/themeContext';

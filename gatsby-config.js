@@ -1,4 +1,5 @@
 module.exports = {
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: "KC's Blog",
     description: 'Just musing on the things I like, especially on Web Dev',
@@ -24,7 +25,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        icon: `src/images/icon.png`,
         name: `Ko Chan's Blog`,
         short_name: `KC's Blog`,
         start_url: `/`,

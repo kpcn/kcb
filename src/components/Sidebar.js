@@ -1,9 +1,8 @@
-import * as React from 'react';
 import Avatar from './Avatar';
 import SocialLinks from './SocialLinks';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
-const Sidebar = () => {
+function Sidebar() {
   const { author, description, socialHandles } = useSiteMetadata();
   return (
     <div className="flex flex-col justify-end w-full grid-bg">
@@ -16,6 +15,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Sidebar;

@@ -1,10 +1,9 @@
-import * as React from 'react';
 import { RiGithubLine } from '@react-icons/all-files/ri/RiGithubLine';
 import { RiTwitterLine } from '@react-icons/all-files/ri/RiTwitterLine';
 import { FiCodesandbox } from '@react-icons/all-files/fi/FiCodesandbox';
 import SocialLink from './SocialLink';
 
-const SocialLinks = ({ handles }) => {
+function SocialLinks({ handles }) {
   const { github, codesandbox, twitter } = handles;
   return (
     <div className="flex items-center justify-center px-6 space-x-6">
@@ -19,6 +18,6 @@ const SocialLinks = ({ handles }) => {
       </SocialLink>
     </div>
   );
-};
+}
 
 export default SocialLinks;

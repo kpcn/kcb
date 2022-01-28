@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Link } from 'gatsby';
 import { TiArrowBackOutline } from '@react-icons/all-files/ti/TiArrowBackOutline';
 import Layout from '../components/Layout';
@@ -8,7 +7,7 @@ const NotFoundPage = () => {
   return (
     <Layout>
       <ContentWrapper>
-        <div className="flex flex-col items-center space-y-4 my-24">
+        <div className="flex flex-col items-center my-24 space-y-4">
           <svg viewBox="0 0 405.624 385.766" className="w-52">
             <path
               fill="#a0fff0"

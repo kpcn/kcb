@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { AiOutlineTags } from '@react-icons/all-files/ai/AiOutlineTags';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
