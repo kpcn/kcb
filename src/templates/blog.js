@@ -1,3 +1,4 @@
+import { createRef, useEffect } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
@@ -10,8 +11,28 @@ import shortcodes from '@shortcodes';
 import HeroImage from '@components/Articles/HeroImage';
 import Tags from '@components/Tags';
 import Seo from '@components/Seo';
+import Comment from '@components/Comment';
 
 const BlogTemplate = ({ data }) => {
+  const commentBox = createRef();
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', 'kpcn/kcb');
+    script.setAttribute('issue-term', 'title');
+    script.setAttribute('id', 'utterances');
+    script.setAttribute('theme', `github-light`);
+    script.setAttribute('crossorigin', 'anonymous');
+    if (commentBox && commentBox.current) {
+      commentBox.current.appendChild(script);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(`Error adding utterances comments on: ${commentBox}`);
+    }
+  }, [commentBox]);
+
   return (
     <Layout>
       <Seo
@@ -58,6 +79,7 @@ const BlogTemplate = ({ data }) => {
               </MDXProvider>
             </section>
             <Tags tags={data.mdx.frontmatter.tags} />
+            <Comment commentBox={commentBox} />
           </article>
         </div>
       </div>
