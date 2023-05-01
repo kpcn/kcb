@@ -4,3 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.grid-bg {
+  background-attachment: fixed;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url(/images/grid.svg);
+}
