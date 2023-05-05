@@ -3,6 +3,7 @@ import '@styles/base.css';
 import DefaultLayout from '@layouts/Default.astro';
 import { Image } from '@astrojs/image/components';
 import Sidebar from '@components/Sidebar.astro';
+import Header from '@components/Header.astro';
 ---
 
 <DefaultLayout title="Welcome to KC's Blog">
@@ -16,7 +17,7 @@ import Sidebar from '@components/Sidebar.astro';
   >
     <div class="flex w-full">
       <div class="flex flex-col w-full bg-white xl:w-8/12 dark:bg-slate-600">
-        <!-- Header here -->
+        <Header />
         <div
           class="flex flex-col px-3 py-4 space-y-4 bg-white md:px-6 dark:bg-slate-600"
         >
