@@ -1,0 +1,21 @@
+---
+import { Image } from '@astrojs/image/components';
+
+export interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="flex justify-center">
+  <a href="/">
+    <Image
+      src={`/images/icon.png`}
+      width={150}
+      height={150}
+      alt={name}
+      class="px-4 py-4 mx-auto rounded-full w-36 h-36"
+    />
+  </a>
+</div>
