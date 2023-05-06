@@ -1,4 +1,5 @@
 ---
+import { SITE_DESCRIPTION } from 'src/meta-data';
 import Avatar from './Avatar.astro';
 import SocialLinks from './SocialLinks.astro';
 ---
@@ -9,7 +10,7 @@ import SocialLinks from './SocialLinks.astro';
     <p
       class="px-6 text-xl font-extrabold text-center text-slate-800 font-dacingscript dark:text-slate-900"
     >
-      Some thoughts on the things I like, especially on Web Dev
+      {SITE_DESCRIPTION}
     </p>
     <SocialLinks />
   </div>
