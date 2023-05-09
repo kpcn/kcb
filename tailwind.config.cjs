@@ -7,7 +7,15 @@ module.exports = {
         dacingscript: ['Dancing Script', 'cursive'],
         firamono: ['Fira Mono', 'monospace'],
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            'code::before': { content: '' },
+            'code::after': { content: '' },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
