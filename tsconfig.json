@@ -6,8 +6,10 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
+      "@content/*": ["src/content/*"],
     },
     "strictNullChecks": true,
     "allowJs": true
-  }
+  },
+  "types": ["@astrojs/image/client"]
 }

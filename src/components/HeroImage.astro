@@ -1,0 +1,32 @@
+---
+import { Image } from '@astrojs/image/components';
+
+interface Props {
+  src: string;
+  alt: string;
+  link: string;
+  name: string;
+}
+
+const { src, alt, name, link } = Astro.props;
+---
+
+<Fragment>
+  <Image
+    aspectRatio="1:1"
+    format="webp"
+    width={1920}
+    height={942}
+    alt={alt}
+    src={src}
+    class="rounded-md"
+  />
+  <span
+    class="inline-block w-full text-sm italic font-thin text-center text-gray-400 dark:text-slate-400"
+  >
+    {alt} by{' '}
+    <a href={link} class="border-b border-gray-300 border-dashed">
+      {name}
+    </a>
+  </span>
+</Fragment>
