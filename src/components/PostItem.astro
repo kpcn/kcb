@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { readTime } from 'src/utils';
+import Tags from './Tags.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -69,4 +70,5 @@ const readingTime = readTime(body);
       {data.excerpt}
     </p>
   </a>
+  <Tags tags={data.tags || []} />
 </article>

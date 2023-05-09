@@ -1,0 +1,41 @@
+---
+import { kebabCase } from 'src/utils';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags = [] } = Astro.props;
+---
+
+<div class="flex items-center py-1 pb-2 space-x-2">
+  <svg
+    class="w-5 h-5 text-gray-500 dark:text-slate-50"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+    ></path>
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"
+    ></path>
+  </svg>
+  <div class="flex flex-wrap items-center">
+    {
+      tags.map((tag) => {
+        return (
+          <a href={`/tags/${kebabCase(tag)}`}>
+            <span class="inline-block px-2 mr-2 text-xs font-thin tracking-widest text-justify text-gray-700 rounded-md dark:text-white bg-slate-50 hover:shadow-md hover:scale-105 hover:bg-slate-100 dark:bg-slate-500 dark:hover:bg-slate-100 dark:hover:text-slate-500">
+              #<i class="uppercase">{tag}</i>
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+</div>
