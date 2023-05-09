@@ -2,11 +2,13 @@
   "name": "pink-photon",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "vitest",
     "astro": "astro"
   },
   "dependencies": {
@@ -16,6 +18,7 @@
     "astro": "^2.4.3",
     "reading-time": "1.5.0",
     "sharp": "0.31.3",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "vitest": "0.31.0"
   }
 }
