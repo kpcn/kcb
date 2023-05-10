@@ -6,4 +6,8 @@ export const kebabCase = (str: string) =>
 
 export const isBlogPage = (pathname: string) => {
   return pathname.match(/\/blog\//g);
-}
+};
+
+export const createSlug = (tag: string) => {
+  return `/blog/tags/${kebabCase(tag)}/`;
+};
