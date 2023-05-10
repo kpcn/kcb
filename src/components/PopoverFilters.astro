@@ -1,8 +1,13 @@
 ---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
 ---
 
 <div>
-  <button data-popover="popover-tags" type="button" class="">All</button>
+  <button data-popover="popover-tags" type="button" class="">{name}</button>
   <div
     data-popover-target="popover-tags"
     id="popover-default"
