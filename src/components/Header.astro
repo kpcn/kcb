@@ -68,3 +68,11 @@ const pathname = new URL(Astro.request.url).pathname;
     </div>
   </div>
 </div>
+
+<script>
+  const backBtn = document.getElementById('back-btn');
+
+  backBtn?.addEventListener('click', () => {
+    window.history.go(-1);
+  });
+</script>
