@@ -12,6 +12,9 @@ module.exports = {
           css: {
             'code::before': { content: '' },
             'code::after': { content: '' },
+            a: {
+              fontColor: theme('colors.blue.500'),
+            },
           },
         },
       }),
