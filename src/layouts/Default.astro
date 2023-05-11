@@ -1,9 +1,9 @@
 ---
 import '@styles/base.css';
 
-export interface Props {
-  title: string;
-}
+import type { PageMeta } from 'src/types';
+
+interface Props extends Pick<PageMeta, 'title'> {}
 
 const { title } = Astro.props;
 ---

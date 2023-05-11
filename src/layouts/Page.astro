@@ -1,0 +1,29 @@
+---
+import type { PageMeta } from 'src/types';
+
+import DefaultLayout from '@layouts/Default.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+
+interface Props extends Pick<PageMeta, 'title'> {}
+
+const { title } = Astro.props;
+---
+
+<DefaultLayout title={title}>
+  <div
+    class="flex order-2 w-full lg:order-1 lg:top-0 lg:h-screen xl:w-3/12 2xl:w-2/12 lg:w-3/12 bg-gradient-to-tr from-cyan-400 to-blue-500 dark:from-cyan-600 dark:to-blue-600"
+  >
+    <Sidebar />
+  </div>
+  <main
+    class="flex-1 order-1 lg:flex lg:overflow-y-scroll lg:order-2 lg:w-9/12 xl:w-9/12 2xl:w-10/12 xl:bg-gray-900 grid-bg"
+  >
+    <div class="flex w-full">
+      <div class="flex flex-col w-full bg-white xl:w-8/12 dark:bg-slate-600">
+        <Header />
+        <slot />
+      </div>
+    </div>
+  </main>
+</DefaultLayout>

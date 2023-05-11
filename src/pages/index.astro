@@ -1,31 +1,16 @@
 ---
-import DefaultLayout from '@layouts/Default.astro';
-import Sidebar from '@components/Sidebar.astro';
+import PageLayout from '@layouts/Page.astro';
 import Header from '@components/Header.astro';
+import PostItem from '@components/PostItem.astro';
 
 import { getCollection } from 'astro:content';
-import PostItem from '@components/PostItem.astro';
 const blogEntries = await getCollection('blog');
 ---
 
-<DefaultLayout title="Welcome to KC's Blog">
+<PageLayout title="Welcome to KC's Blog">
   <div
-    class="flex order-2 w-full lg:order-1 lg:top-0 lg:h-screen xl:w-3/12 2xl:w-2/12 lg:w-3/12 bg-gradient-to-tr from-cyan-400 to-blue-500 dark:from-cyan-600 dark:to-blue-600"
+    class="flex flex-col px-3 py-4 space-y-4 bg-white md:px-6 dark:bg-slate-600"
   >
-    <Sidebar />
+    {blogEntries.map((post) => <PostItem post={post} />)}
   </div>
-  <main
-    class="flex-1 order-1 lg:flex lg:overflow-y-scroll lg:order-2 lg:w-9/12 xl:w-9/12 2xl:w-10/12 xl:bg-gray-900 grid-bg"
-  >
-    <div class="flex w-full">
-      <div class="flex flex-col w-full bg-white xl:w-8/12 dark:bg-slate-600">
-        <Header />
-        <div
-          class="flex flex-col px-3 py-4 space-y-4 bg-white md:px-6 dark:bg-slate-600"
-        >
-          {blogEntries.map((post) => <PostItem post={post} />)}
-        </div>
-      </div>
-    </div>
-  </main>
-</DefaultLayout>
+</PageLayout>
