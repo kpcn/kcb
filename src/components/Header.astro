@@ -2,6 +2,7 @@
 import { isBlogPage } from 'src/utils';
 import PopoverFilters from './PopoverFilters.astro';
 import Icon from './Icon.astro';
+import { STORAGE_KEY } from 'src/meta-data';
 
 const pathname = new URL(Astro.request.url).pathname;
 const getTag = () => {
@@ -15,6 +16,8 @@ const getTag = () => {
 
 const isSinglePost = pathname.split('/').length === 3;
 const tagName = getTag();
+
+const localStorageKey = STORAGE_KEY;
 ---
 
 <div
@@ -64,8 +67,9 @@ const tagName = getTag();
   </div>
 </div>
 
-<script>
-  const STORAGE_KEY = '@kcb-theme';
+<script define:vars={{ localStorageKey }}>
+  // NOTE: localStorageKey is defined in the <script> tag above, but got problem now, not recognizing it
+  const STORAGE_KEY = localStorageKey;
 
   const darkModeBtn = document.getElementById('dark-mode-btn');
 

@@ -1,11 +1,13 @@
 ---
 import '@styles/base.css';
+import { STORAGE_KEY } from 'src/meta-data';
 
 import type { PageMeta } from 'src/types';
 
 interface Props extends Pick<PageMeta, 'title'> {}
 
 const { title } = Astro.props;
+const localStorageKey = STORAGE_KEY;
 ---
 
 <!DOCTYPE html>
@@ -24,8 +26,9 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<script>
-  const STORAGE_KEY = '@kcb-theme';
+<script define:vars={{ localStorageKey }}>
+  // NOTE: localStorageKey is defined in the <script> tag above, but got problem now, not recognizing it
+  const STORAGE_KEY = localStorageKey;
 
   const theme = (() => {
     if (
