@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { createSlug } from 'src/utils';
 import Icon from './Icon.astro';
+import Tag from './Tags/Tag.astro';
 
 const blogEntries = await getCollection('blog');
 
@@ -17,10 +18,10 @@ const tags = Array.from(
 );
 
 interface Props {
-  name: string;
+  name?: string;
 }
 
-const { name } = Astro.props;
+const { name = '' } = Astro.props;
 ---
 
 <div>
@@ -55,12 +56,10 @@ const { name } = Astro.props;
         </a>
         {
           tags.map((tag) => (
-            <a
-              href={createSlug(tag || '')}
-              class="inline-block px-3 py-1 mb-2 mr-2 text-xs font-medium text-justify text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
-            >
-              {tag}
-            </a>
+            <Tag
+              name={tag || ''}
+              class="inline-block text-xs text-justify mr-2 px-3 py-1 mb-2 font-medium text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
+            />
           ))
         }
       </div>

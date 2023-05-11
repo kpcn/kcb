@@ -4,6 +4,17 @@ import PopoverFilters from './PopoverFilters.astro';
 import Icon from './Icon.astro';
 
 const pathname = new URL(Astro.request.url).pathname;
+const getTag = () => {
+  const name = pathname.split('/').slice(-1)[0];
+  const secondLast = pathname.split('/').slice(-2)[0];
+  if (secondLast === 'blog') {
+    return '';
+  }
+  return name.split('-').join(' ') || 'All';
+};
+
+const isSinglePost = pathname.split('/').length === 3;
+const tagName = getTag();
 ---
 
 <div
@@ -20,15 +31,15 @@ const pathname = new URL(Astro.request.url).pathname;
             >
               <Icon icon="back" class="w-6 h-6" />
             </button>
-            <PopoverFilters name="Tags" />
           </>
-        ) : (
-          <>
-            <PopoverFilters name="All" />
-            <span class="text-lg font-thin tracking-wide uppercase dark:text-slate-50">
-              Posts
-            </span>
-          </>
+        ) : null
+      }
+      <PopoverFilters name={tagName} />
+      {
+        !isSinglePost && (
+          <span class="text-lg font-thin tracking-wide uppercase dark:text-slate-50">
+            Posts
+          </span>
         )
       }
     </div>

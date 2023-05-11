@@ -11,7 +11,7 @@ export const isBlogPage = (pathname: string) => {
 };
 
 export const createSlug = (tag: string) => {
-  return `/blog/tags/${kebabCase(tag)}/`;
+  return `/blog/tags/${kebabCase(tag)}`;
 };
 
 // TODO: to refactor this workaround
