@@ -1,7 +1,6 @@
 ---
 import ArticleLayout from '@layouts/Article.astro';
 import Tags from '@components/Tags/Tags.astro';
-import { readTime } from 'src/utils';
 
 import { CollectionEntry, getCollection } from 'astro:content';
 import ArticleHeader from '@components/Article/Header.astro';
@@ -19,10 +18,9 @@ interface Props {
 }
 
 const {
-  post: { body, data, render, slug },
+  post: { data, render },
 } = Astro.props;
-const { Content, headings } = await render();
-const readingTime = readTime(body);
+const { Content, remarkPluginFrontmatter } = await render();
 ---
 
 <ArticleLayout title={`${data.title} | KC's blog`}>
@@ -32,7 +30,7 @@ const readingTime = readTime(body);
     <ArticleHeader
       title={data.title}
       publishedAt={data.publishedAt}
-      readingTime={readingTime}
+      readingTime={remarkPluginFrontmatter.minutesToRead}
       hero_image={data.hero_image}
       hero_image_desc={data.hero_image_desc}
       hero_image_credited_name={data.hero_image_credited_name}

@@ -9,9 +9,12 @@
       "@styles/*": ["src/styles/*"],
       "@content/*": ["src/content/*"],
       "@utils/*": ["src/utils/*"],
+      "@plugins/*": ["src/plugins/*"],
     },
     "strictNullChecks": true,
-    "allowJs": true
+    "allowJs": true,
+    "checkJs": true,
   },
-  "types": ["@astrojs/image/client"]
+  "types": ["@astrojs/image/client"],
+  "include": ["**/*.mjs"]
 }
