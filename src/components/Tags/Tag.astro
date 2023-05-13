@@ -3,15 +3,16 @@ import { createSlug } from 'src/utils';
 
 interface Props {
   name: string;
+  display: string;
   [key: string]: string;
 }
 
-const { name = '', ...attributes } = Astro.props;
+const { name = '', display = '', ...attributes } = Astro.props;
 const { prefixSign } = attributes || {};
 ---
 
-<a href={createSlug(name)}>
+<a href={name === 'home' ? '/' : createSlug(name)}>
   <span {...attributes}>
-    {prefixSign}<i class="">{name}</i>
+    {prefixSign}<i>{display}</i>
   </span>
 </a>

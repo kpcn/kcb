@@ -16,6 +16,7 @@ const { tags = [] } = Astro.props;
       tags.map((tag) => (
         <Tag
           name={tag}
+          display={tag}
           prefixSign="#"
           class="uppercase inline-block text-xs text-justify mr-2 py-1 mb-2 px-2 font-thin tracking-widest text-gray-700 rounded-md dark:text-white bg-slate-50 hover:shadow-md hover:scale-105 hover:bg-slate-100 dark:bg-slate-500 dark:hover:bg-slate-100 dark:hover:text-slate-500"
         />
