@@ -13,7 +13,6 @@
     },
     "strictNullChecks": true,
     "allowJs": true,
-    "checkJs": true,
   },
   "types": ["@astrojs/image/client"],
   "include": ["**/*.mjs"]
