@@ -3,10 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@src/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@content/*": ["src/content/*"],
+      "@utils/*": ["src/utils/*"],
     },
     "strictNullChecks": true,
     "allowJs": true
