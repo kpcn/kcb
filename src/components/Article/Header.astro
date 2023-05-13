@@ -1,6 +1,7 @@
 ---
 import HeroImage from '@components/HeroImage.astro';
 import Icon from '@components/Icon.astro';
+import { formatDate } from '@src/utils';
 
 interface Props {
   title: string;
@@ -21,6 +22,8 @@ const {
   hero_image_credited_link = '',
   hero_image_credited_name = '',
 } = Astro.props;
+
+const formattedPublishedDate = formatDate(publishedAt);
 ---
 
 <header class="py-2">
@@ -33,7 +36,7 @@ const {
     <div class="flex items-center space-x-2">
       <Icon icon="calendar" class="w-5 h-5" />
       <span class="text-sm italic md:text-base">
-        {publishedAt}
+        {formattedPublishedDate}
       </span>
     </div>
     <div class="flex items-center space-x-2">

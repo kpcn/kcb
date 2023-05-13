@@ -14,6 +14,13 @@ export const createSlug = (tag: string) => {
   return `/blog/tags/${kebabCase(tag)}`;
 };
 
+export const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
 // TODO: to refactor this workaround
 export const dynamicViteAssetImport = (
   imageFileName: string,

@@ -1,8 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { readTime } from 'src/utils';
 import Tags from '@components/Tags/Tags.astro';
 import Icon from './Icon.astro';
+
+import { formatDate, readTime } from '@src/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -12,6 +13,8 @@ const {
   post: { body, data, slug, id },
 } = Astro.props;
 const readingTime = readTime(body);
+
+const formattedPublishedDate = formatDate(data?.publishedAt);
 ---
 
 <article
@@ -29,7 +32,7 @@ const readingTime = readTime(body);
     >
       <div class="flex items-center space-x-2">
         <Icon icon="calendar" class="w-5 h-5" />
-        <span class="italic">{data.publishedAt}</span>
+        <span class="italic">{formattedPublishedDate}</span>
       </div>
       <div class="flex items-center space-x-2">
         <Icon icon="clock" class="w-5 h-5" />
