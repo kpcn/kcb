@@ -4,6 +4,7 @@ import Tags from '@components/Tags/Tags.astro';
 
 import { CollectionEntry, getCollection } from 'astro:content';
 import ArticleHeader from '@components/Article/Header.astro';
+import Pre from '@src/components/Mdx/Pre.astro';
 
 export async function getStaticPaths({}) {
   const entries = await getCollection('blog');
@@ -25,7 +26,7 @@ const { Content, remarkPluginFrontmatter } = await render();
 
 <ArticleLayout title={`${data.title} | KC's blog`}>
   <article
-    class="flex-1 px-6 pt-2 pb-10 space-y-2 bg-white md:px-8 font-firamono dark:bg-slate-600"
+    class="flex-1 space-y-2 bg-white px-6 pb-10 pt-2 font-firamono dark:bg-slate-600 md:px-8"
   >
     <ArticleHeader
       title={data.title}
@@ -37,7 +38,7 @@ const { Content, remarkPluginFrontmatter } = await render();
       hero_image_credited_link={data.hero_image_credited_link}
     />
     <section
-      class="w-full pb-6 prose prose-code:bg-slate-100 prose-code:font-thin prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-pre:bg-transparent xl:prose-lg prose-a:text-blue-400 prose-a:no-underline max-w-fit dark:prose-invert dark:prose-code:bg-slate-200 dark:prose-pre:bg-slate-200"
+      class="prose w-full max-w-fit pb-6 dark:prose-invert xl:prose-lg prose-a:text-blue-400 prose-a:no-underline prose-code:rounded-md prose-code:bg-slate-100 prose-code:px-2 prose-code:py-1 prose-code:font-thin prose-pre:bg-transparent dark:prose-code:bg-slate-400 dark:prose-code:text-white dark:prose-pre:bg-slate-200 sm:overflow-x-auto"
     >
       <Content />
     </section>

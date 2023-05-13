@@ -26,6 +26,7 @@
     "vitest": "0.31.0"
   },
   "devDependencies": {
-    "node-html-parser": "6.1.5"
+    "node-html-parser": "6.1.5",
+    "prettier-plugin-tailwindcss": "0.2.8"
   }
 }
