@@ -4,7 +4,6 @@ import Tags from '@components/Tags/Tags.astro';
 
 import { CollectionEntry, getCollection } from 'astro:content';
 import ArticleHeader from '@components/Article/Header.astro';
-import Pre from '@src/components/Mdx/Pre.astro';
 
 export async function getStaticPaths({}) {
   const entries = await getCollection('blog');
