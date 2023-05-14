@@ -35,3 +35,7 @@
   background-size: 100% 100%;
   background-image: url(/images/grid.svg);
 }
+
+.astro-imagetools-img {
+  @apply rounded-md;
+}

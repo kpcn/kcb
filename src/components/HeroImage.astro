@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Img } from 'astro-imagetools/components';
 
 interface Props {
   src?: string;
@@ -14,14 +14,12 @@ const { src, alt, name, link } = Astro.props;
 {
   src && (
     <>
-      <Image
-        aspectRatio="1:1"
+      <Img
         format="webp"
         width={1200}
         height={589}
         alt={alt || ''}
         src={src || ''}
-        class="rounded-md"
       />
       <span class="inline-block w-full text-center text-sm font-thin italic text-gray-400 dark:text-slate-400">
         {alt} by{' '}
