@@ -24,8 +24,6 @@ module.exports = {
                 fontColor: theme('colors.blue.500'),
               },
               pre: {
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'keep-all',
                 code: {
                   backgroundColor: 'transparent',
                 },
