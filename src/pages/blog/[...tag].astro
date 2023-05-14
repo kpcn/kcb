@@ -5,7 +5,7 @@ import { kebabCase } from 'src/utils';
 
 import { getCollection } from 'astro:content';
 
-export async function getStaticPaths(object: any) {
+export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
 
   const tags = Array.from(

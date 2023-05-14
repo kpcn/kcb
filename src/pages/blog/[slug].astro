@@ -1,12 +1,12 @@
 ---
-import ArticleLayout from '@layouts/Article.astro';
-import Tags from '@components/Tags/Tags.astro';
+import ArticleLayout from "@layouts/Article.astro";
+import Tags from "@components/Tags/Tags.astro";
 
-import { CollectionEntry, getCollection } from 'astro:content';
-import ArticleHeader from '@components/Article/Header.astro';
+import { CollectionEntry, getCollection } from "astro:content";
+import ArticleHeader from "@components/Article/Header.astro";
 
-export async function getStaticPaths({}) {
-  const entries = await getCollection('blog');
+export async function getStaticPaths() {
+  const entries = await getCollection("blog");
   return entries.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -14,7 +14,7 @@ export async function getStaticPaths({}) {
 }
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
 const {
@@ -31,10 +31,7 @@ const { Content, remarkPluginFrontmatter } = await render();
       title={data.title}
       publishedAt={data.publishedAt}
       readingTime={remarkPluginFrontmatter.minutesToRead}
-      hero_image={data.hero_image}
-      hero_image_desc={data.hero_image_desc}
-      hero_image_credited_name={data.hero_image_credited_name}
-      hero_image_credited_link={data.hero_image_credited_link}
+      image={data?.image || {}}
     />
     <section
       class="prose w-full max-w-fit pb-6 dark:prose-invert xl:prose-lg prose-a:text-blue-400 prose-a:no-underline prose-code:rounded-md prose-code:bg-slate-100 prose-code:px-2 prose-code:py-1 prose-code:font-thin prose-pre:max-w-[calc(100vw-3rem)] prose-pre:bg-transparent dark:prose-code:bg-slate-400 dark:prose-code:text-white dark:prose-pre:bg-slate-200 sm:overflow-x-auto"

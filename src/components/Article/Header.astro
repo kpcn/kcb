@@ -7,52 +7,45 @@ interface Props {
   title: string;
   publishedAt: string;
   readingTime: string;
-  hero_image?: string | '';
-  hero_image_desc?: string | '';
-  hero_image_credited_name?: string | '';
-  hero_image_credited_link?: string | '';
+  image?: {
+    url?: string;
+    alt?: string;
+    credit?: string;
+    creditlink?: string;
+  };
 }
 
-const {
-  title,
-  publishedAt,
-  readingTime,
-  hero_image = '',
-  hero_image_desc = '',
-  hero_image_credited_link = '',
-  hero_image_credited_name = '',
-} = Astro.props;
-
+const { title, publishedAt, readingTime, image } = Astro.props;
 const formattedPublishedDate = formatDate(publishedAt);
 ---
 
 <header class="py-2">
-  <h1 class="pt-2 pb-1 text-2xl dark:text-slate-50">
+  <h1 class="pb-1 pt-2 text-2xl dark:text-slate-50">
     {title}
   </h1>
   <div
-    class="flex items-center py-1 pb-4 text-gray-500 space-x-7 dark:text-slate-50"
+    class="flex items-center space-x-7 py-1 pb-4 text-gray-500 dark:text-slate-50"
   >
     <div class="flex items-center space-x-2">
-      <Icon icon="calendar" class="w-5 h-5" />
+      <Icon icon="calendar" class="h-5 w-5" />
       <span class="text-sm italic md:text-base">
         {formattedPublishedDate}
       </span>
     </div>
     <div class="flex items-center space-x-2">
-      <Icon icon="clock" class="w-5 h-5" />
+      <Icon icon="clock" class="h-5 w-5" />
       <span class="text-sm italic md:text-base">
         {readingTime}
       </span>
     </div>
   </div>
   {
-    hero_image && (
+    image && (
       <HeroImage
-        src={hero_image}
-        alt={hero_image_desc}
-        name={hero_image_credited_name}
-        link={hero_image_credited_link}
+        src={image.url}
+        alt={image.alt}
+        name={image.credit}
+        link={image.creditlink}
       />
     )
   }

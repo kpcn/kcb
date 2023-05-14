@@ -2,31 +2,33 @@
 import { Image } from '@astrojs/image/components';
 
 interface Props {
-  src: string;
-  alt: string;
-  link: string;
-  name: string;
+  src?: string;
+  alt?: string;
+  name?: string;
+  link?: string;
 }
 
 const { src, alt, name, link } = Astro.props;
 ---
 
-<Fragment>
-  <Image
-    aspectRatio="1:1"
-    format="webp"
-    width={1920}
-    height={942}
-    alt={alt}
-    src={src}
-    class="rounded-md"
-  />
-  <span
-    class="inline-block w-full text-sm italic font-thin text-center text-gray-400 dark:text-slate-400"
-  >
-    {alt} by{' '}
-    <a href={link} class="border-b border-gray-300 border-dashed">
-      {name}
-    </a>
-  </span>
-</Fragment>
+{
+  src && (
+    <>
+      <Image
+        aspectRatio="1:1"
+        format="webp"
+        width={1200}
+        height={589}
+        alt={alt || ''}
+        src={src || ''}
+        class="rounded-md"
+      />
+      <span class="inline-block w-full text-center text-sm font-thin italic text-gray-400 dark:text-slate-400">
+        {alt} by{' '}
+        <a href={link} class="border-b border-dashed border-gray-300">
+          {name}
+        </a>
+      </span>
+    </>
+  )
+}

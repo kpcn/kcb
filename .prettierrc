@@ -5,13 +5,5 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "printWidth": 80,
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "overrides": [
-    {
-      "files": "src/**/*.html", 
-      "options": {
-        "printWidth": 140
-      }
-    }
-  ]
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
