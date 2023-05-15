@@ -1,15 +1,14 @@
 ---
 import '@styles/base.css';
+import type { SeoMetaData } from '@utils/meta';
 
-import { getMetaData, type SeoMetaData } from '@utils/meta';
-import { SEO } from 'astro-seo';
+import Seo from '@src/components/Seo.astro';
 
 export interface Props {
   metaData?: SeoMetaData;
 }
 
 const { metaData } = Astro.props;
-const { title, summary, name, ogimage } = getMetaData(metaData);
 ---
 
 <!DOCTYPE html>
@@ -20,17 +19,7 @@ const { title, summary, name, ogimage } = getMetaData(metaData);
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <SEO
-      title={title}
-      description={summary}
-      openGraph={{
-        basic: {
-          title,
-          type: name,
-          image: ogimage
-        },
-      }}
-    />
+    <Seo data={metaData} />
   </head>
   <body>
     <div class="flex h-screen flex-col lg:flex-row">

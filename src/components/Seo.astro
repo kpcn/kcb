@@ -1,0 +1,23 @@
+---
+import { getMetaData, type SeoMetaData } from '@src/utils/meta';
+import { SEO } from 'astro-seo';
+
+export interface Props {
+  data?: SeoMetaData;
+}
+
+const { data } = Astro.props;
+const { title, summary, name, ogimage } = getMetaData(data);
+---
+
+<SEO
+  title={title}
+  description={summary}
+  openGraph={{
+    basic: {
+      title,
+      type: name,
+      image: ogimage,
+    },
+  }}
+/>
