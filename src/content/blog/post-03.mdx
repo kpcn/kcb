@@ -1,0 +1,60 @@
+---
+title: 'Proactive flags, the directives for the Link'
+publishedAt: '2022-01-15'
+summary: 'The resource hints for the HTML Link element that can enable to make pre-processing the things for better web performance.'
+excerpt: 'Loading resources is not an easy task. However, when we talk about web performance today, no one can ignore resource hints that support the HTML link to make it shinier...'
+image:
+  url: '/images/opposite-of-upward-arrows.webp'
+  alt: 'Upward arrows (Opposite directions)'
+  credit: 'Jungwoo Hong'
+  creditLink: 'https://unsplash.com/photos/cYUMaCqMYvI'
+tags:
+  - Resource Hints
+  - WPO
+  - HTML
+---
+
+Loading resources is not an easy task. However, when we talk about web performance today, no one can ignore resource hints that support the HTML link to make it shinier. Generally speaking, these relationship types of the HTML Link element enables preprocessing the things for better page performance. Those are `dns-prefetch`, `prefetch`, `preconnect`, `prerender` & `preload`, currently supported by most evergreen browsers. But their implementation may vary based on different vendors.
+
+First, before we talk about those types, we need to understand the `link`. It's all about the relationship between the current document and an external resource. And also, The relationship attribute is one of the helpful features of the `link`. As for me, I like the definition of the link that Yoav Weiss once said in this talk. [Link is a mechanism](https://youtu.be/TrtPUjOb-nk?t=307); many nifty nuts and bolts have made it very useful to create new relations.
+
+### Preconnecting
+
+To create an HTTP connection, resolve DNS, TCP handshake, negotiate a secure TLS connection, and [other steps are needed](https://www.catchpoint.com/blog/http-transaction-steps). Those steps can take some amount of milliseconds. `preconnect` give a hint to the browser to make a proactive HTTP connection to the domain. That's why preconnecting improve performance because the connection already happened when the user agent got the hint to make a connection to download a resource.
+
+```html
+Link: <https://example.com>; rel=preconnect;
+<link rel="preconnect" href="https://example.com" />
+```
+
+
+### Prefetching
+
+Prefetching is the loading resources upfront before the user requests them. Which resources we need to prefetch is the question we need to ask ourselves first & if we don't have any [strategies for it](https://calendar.perfplanet.com/2018/all-about-prefetching/?utm_campaign=all-about-prefetching--katie-hempenius), it's only about wasting bandwidth. There're three main types, which we can assume as link prefetching, DNS prefetching & prerendering.
+
+#### Link Prefetching
+
+Link prefetching, the `prefetch` type suggest a hint to the browser for fetching the linked resource in advance, as it is likely to be requested by the user, to improve the load time of the next page. A noteworthy fact about link prefetching is essential to specify the `as` attribute for determining the content type that helps prioritize & schedule the download properly. This type of prefetching may not be appropriate for all kinds of content, and most suggest that it should be cacheable content such as stylesheets, images and scripts. And also need to avoid urgent loading resources that you need in a few seconds and use `preload` instead for that kind of scenario.
+
+#### DNS prefetching
+
+In DSN prefetching, `dns-prefetch` tell a hint to the browser to perform a DNS resolution of a domain in advance to minimize the latency. Similar to `preconnect`, the domains you will use soon. The main difference is RTT, round-trip time. `dns-prefetch` will only do the DNS lookup. In contrast, `preconnect` will do two additional steps like TCP handshake & TLS negotiation. `dns-prefetch` is more lightweight than `preconnect`. We can use it when we want to connect other third-party domains alongside the limited connections of `preconnect`.
+
+#### Prerendering
+
+In prerendering, `prerender` indicates that the browser will download a resource because of what will be needed later during the current navigation. It is similar to prefetching, but the main difference is that instead of just downloading the required resources, it renders the entire page in a hidden tab. Then, when the user navigates to that link, the content will replace the current tab. It's helpful when you're sure what a user will visit the next specific page. It's good to know, as it's the least supported type of prefetching in major browsers.
+
+### Preloading
+
+The `preload` keyword hints to the browser to get the specific resources that your current page will need very soon. It's happened early in the page lifecycle before the browser's lead rendering comes in. But the browser doesn't do anything with that resource after downloading it. Only do cache. So that something else needs it, it's available immediately. The main difference between the two-page prediction features, `preload` and `prefetch`, is **now** and **then**. Preload focuses on getting the resources for the current page, and prefetch is used to load resources that are likely required for the following navigation. Same as prefetching, `preload` need to define `as` attribute, which can be anything style, script, font & [some other values](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload#what_types_of_content_can_be_preloaded). Overusing `preload` will prevent the browser from scheduling everything smartly. [The more `preload` you add, the more delays other resources](https://twitter.com/iamakulov/status/1080467599392206848?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1080467599392206848%7Ctwgr%5E%7Ctwcon%5Es1_&ref_url=https%3A%2F%2F3perf.com%2Fblog%2Flink-rels%2F).
+
+#### Moulde preloading
+
+The `modulepreload` hint provides a way to proactively fetch a module script and its dependencies and store them in the document's module map for later evaluation. It also needs to specify the `as` attribute in a different context, but the default is `script`. Generally, `modulerepload` and `preload` are very similar. Still, in detail, they have [different processing](https://github.com/whatwg/fetch/issues/486#issuecomment-282044172) models of their own, such as an indicator for the `as` attribute has it changed, it doesn't re-fetch a resource while `preload` has prefetching.
+
+```html
+<link rel="modulepreload" href="/useful.js" />
+<link rel="modulepreload" href="/another-useful.js" as="serviceworker" />
+```
+
+In conclusion, there's no doubt that the combination of preconnecting, prefetching & preloading resources are a powerful way to improve loading resources. But, on the other hand, use cautiously, and if not, it will hurt the performance.

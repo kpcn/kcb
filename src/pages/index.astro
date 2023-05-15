@@ -1,0 +1,15 @@
+---
+import PageLayout from '@layouts/Page.astro';
+import PostItem from '@components/PostItem.astro';
+
+import { getCollection } from 'astro:content';
+const blogEntries = await getCollection('blog');
+---
+
+<PageLayout>
+  <div
+    class="flex flex-col space-y-4 bg-white px-3 py-4 dark:bg-slate-600 md:px-6"
+  >
+    {blogEntries.map((post) => <PostItem post={post} />)}
+  </div>
+</PageLayout>

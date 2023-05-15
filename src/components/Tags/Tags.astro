@@ -1,0 +1,26 @@
+---
+import Icon from '@components/Icon.astro';
+import Tag from './Tag.astro';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags = [] } = Astro.props;
+---
+
+<div class="flex items-center py-1 pb-2 space-x-2">
+  <Icon icon="price-tag" class="w-5 h-5 text-gray-500 dark:text-slate-50" />
+  <div class="flex flex-wrap items-center">
+    {
+      tags.map((tag) => (
+        <Tag
+          name={tag}
+          display={tag}
+          prefixSign="#"
+          class="uppercase inline-block text-xs text-justify mr-2 py-1 mb-2 px-2 font-thin tracking-widest text-gray-700 rounded-md dark:text-white bg-slate-50 hover:shadow-md hover:scale-105 hover:bg-slate-100 dark:bg-slate-500 dark:hover:bg-slate-100 dark:hover:text-slate-500"
+        />
+      ))
+    }
+  </div>
+</div>

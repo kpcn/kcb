@@ -1,0 +1,93 @@
+---
+import { isBlogPage } from '@utils/misc';
+import PopoverFilters from './PopoverFilters.astro';
+import Icon from './Icon.astro';
+
+const pathname = new URL(Astro.request.url).pathname;
+
+const getTag = () => {
+  const name = pathname.split('/').slice(-1)[0];
+  const secondLast = pathname.split('/').slice(-2)[0];
+  if (secondLast === 'blog') {
+    return '';
+  }
+  return name.split('-').join(' ') || 'All';
+};
+
+const isSinglePost = pathname.split('/').length === 3;
+const tagName = getTag();
+---
+
+<div
+  class="sticky top-0 z-10 py-6 pl-4 pr-6 shadow-sm dark:shadow-slate-600 md:px-8 bg-gray-50 dark:bg-slate-700"
+>
+  <div class="flex items-center justify-between w-full">
+    <div class="flex space-x-2">
+      {
+        isBlogPage(pathname) ? (
+          <>
+            <button
+              id="back-btn"
+              class="antialiased text-lg font-thin tracking-wide uppercase text-gray-800 dark:text-slate-50"
+            >
+              <Icon icon="back" class="w-6 h-6" />
+            </button>
+          </>
+        ) : null
+      }
+      <PopoverFilters name={tagName} />
+      {
+        !isSinglePost && (
+          <span class="text-lg font-thin tracking-wide uppercase dark:text-slate-50">
+            Posts
+          </span>
+        )
+      }
+    </div>
+    <div class="flex items-center space-x-3">
+      <div class="flex items-center">
+        <a
+          href="/"
+          class="text-lg font-thin tracking-wide uppercase dark:text-slate-50"
+        >
+          Home</a
+        >
+      </div>
+      <div class="flex items-center text-lg font-thin tracking-wide uppercase">
+        <button id="dark-mode-btn" class="antialiased flex">
+          <Icon
+            icon="light-bulb"
+            class="w-6 h-6 text-gray-800 dark:text-white"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = '@kcb-theme';
+
+  const darkModeBtn = document.getElementById('dark-mode-btn');
+
+  darkModeBtn?.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem(STORAGE_KEY);
+    if (currentTheme === 'light') {
+      localStorage.setItem(STORAGE_KEY, 'dark');
+
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      localStorage.setItem(STORAGE_KEY, 'light');
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  });
+</script>
+
+<script is:inline>
+  const backBtn = document.getElementById('back-btn');
+  backBtn?.addEventListener('click', () => {
+    window.history.go(-1);
+  });
+</script>

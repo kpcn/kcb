@@ -1,0 +1,18 @@
+---
+import { createSlug } from '@utils/format';
+
+interface Props {
+  name: string;
+  display: string;
+  [key: string]: string;
+}
+
+const { name = '', display = '', ...attributes } = Astro.props;
+const { prefixSign } = attributes || {};
+---
+
+<a href={name === 'home' ? '/' : createSlug(name)}>
+  <span {...attributes}>
+    {prefixSign}<i>{display}</i>
+  </span>
+</a>
