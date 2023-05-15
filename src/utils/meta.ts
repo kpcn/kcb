@@ -29,8 +29,3 @@ export const getMetaData = (meta?: SeoMetaData) => {
     keywords: meta?.keywords || defaultMetaData.keywords,
   };
 };
-
-export default {
-  TITLE: defaultMetaData.title,
-  SITE_DESCRIPTION: meta.description,
-};
