@@ -1,4 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
+import meta from '@src/meta.json';
 
 export const SITE_TITLE = `KC's Blog`;
 export const SITE_DESCRIPTION = `Some thoughts on the things I like, especially on Web Dev`;
@@ -13,25 +14,7 @@ export type SeoMetaData = Partial<CollectionEntry<'blog'>['data']> & {
 };
 
 const defaultMetaData = {
-  title: SITE_TITLE,
-  description: SITE_DESCRIPTION,
-  name: "KC's Blog",
-  image: '/images/kc-img.jpg',
-  type: 'profile',
-  canonical: 'https://kcnk.me',
-  socialHandles: {
-    twitter: '@kchancnk',
-  },
-  keywords: [
-    'web',
-    'development',
-    'blog',
-    'astro',
-    'svelte',
-    'react',
-    'javascript',
-    'typescript',
-  ],
+  ...meta,
 };
 
 export const getMetaData = (meta?: SeoMetaData) => {
