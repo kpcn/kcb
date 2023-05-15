@@ -16,7 +16,7 @@ const defaultMetaData = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   name: "KC's Blog",
-  image: '/images/og-image.png',
+  image: '/images/kc-img.jpg',
   type: 'profile',
   canonical: 'https://kcnk.me',
   socialHandles: {
