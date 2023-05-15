@@ -1,6 +1,9 @@
 ---
-import { getMetaData, type SeoMetaData } from '@src/utils/meta';
+import type { SeoMetaData } from '@utils/meta';
+
 import { SEO } from 'astro-seo';
+
+import { getMetaData } from '@utils/meta';
 
 export interface Props {
   data?: SeoMetaData;
