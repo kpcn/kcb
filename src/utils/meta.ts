@@ -1,8 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 import meta from '@src/meta.json';
 
-export const SITE_TITLE = `KC's Blog`;
-export const SITE_DESCRIPTION = `Some thoughts on the things I like, especially on Web Dev`;
+export const SITE_TITLE = meta.title;
+export const SITE_DESCRIPTION = meta.description;
 
 export type SeoMetaData = Partial<CollectionEntry<'blog'>['data']> & {
   type?: 'article' | 'profile';
@@ -31,5 +31,6 @@ export const getMetaData = (meta?: SeoMetaData) => {
 };
 
 export default {
-  ...defaultMetaData,
+  TITLE: defaultMetaData.title,
+  SITE_DESCRIPTION: meta.description,
 };
