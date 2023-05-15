@@ -1,25 +1,8 @@
 import path from 'path';
 
-export const kebabCase = (str: string) =>
-  str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/[\s_]+/g, '-')
-    .toLowerCase();
-
 export const isBlogPage = (pathname: string) => {
   return pathname.match(/\/blog\//g);
 };
-
-export const createSlug = (tag: string) => {
-  return `/blog/tags/${kebabCase(tag)}`;
-};
-
-export const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 
 // TODO: to refactor this workaround
 export const dynamicViteAssetImport = (

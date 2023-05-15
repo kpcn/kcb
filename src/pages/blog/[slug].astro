@@ -1,12 +1,12 @@
 ---
-import ArticleLayout from "@layouts/Article.astro";
-import Tags from "@components/Tags/Tags.astro";
+import ArticleLayout from '@layouts/Article.astro';
+import Tags from '@components/Tags/Tags.astro';
 
-import { CollectionEntry, getCollection } from "astro:content";
-import ArticleHeader from "@components/Article/Header.astro";
+import { CollectionEntry, getCollection } from 'astro:content';
+import ArticleHeader from '@components/Article/Header.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection("blog");
+  const entries = await getCollection('blog');
   return entries.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 }
 
 const {
@@ -23,7 +23,7 @@ const {
 const { Content, remarkPluginFrontmatter } = await render();
 ---
 
-<ArticleLayout title={`${data.title} | KC's blog`}>
+<ArticleLayout>
   <article
     class="flex-1 space-y-2 bg-white px-6 pb-10 pt-2 font-firamono dark:bg-slate-600 md:px-8"
   >

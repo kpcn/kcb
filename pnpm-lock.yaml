@@ -10,6 +10,7 @@ specifiers:
   '@tailwindcss/typography': 0.5.9
   astro: ^2.4.5
   astro-imagetools: 0.8.1
+  astro-seo: 0.7.2
   mdast-util-to-string: 3.2.0
   node-html-parser: 6.1.5
   prettier-plugin-tailwindcss: 0.2.8
@@ -28,6 +29,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.2
   astro: 2.4.5_sharp@0.32.1
   astro-imagetools: 0.8.1_astro@2.4.5
+  astro-seo: 0.7.2
   mdast-util-to-string: 3.2.0
   node-html-parser: 6.1.5
   reading-time: 1.5.0
@@ -1491,6 +1493,10 @@ packages:
       potrace: 2.1.8
     optionalDependencies:
       imagetools-core: 3.0.2
+    dev: false
+
+  /astro-seo/0.7.2:
+    resolution: {integrity: sha512-YnSqj4E6vbF7wRk3gcxOPHBjenhfgaINEJlTsnu4sovAyfyGEdQksbioYKoZ+vERRDaYvEricfSzC6fc9lieww==}
     dev: false
 
   /astro/2.4.5_sharp@0.32.1:

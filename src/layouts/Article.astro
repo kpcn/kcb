@@ -1,26 +1,27 @@
 ---
-import type { PageMeta } from '@src/types';
-
 import DefaultLayout from '@layouts/Default.astro';
 import Header from '@components/Header.astro';
 import Sidebar from '@components/Sidebar.astro';
+import type { SeoMetaData } from '@utils/meta';
 
-interface Props extends Pick<PageMeta, 'title'> {}
+export interface Props {
+  metaData?: SeoMetaData;
+}
 
-const { title } = Astro.props;
+const { metaData } = Astro.props;
 ---
 
-<DefaultLayout title={title}>
+<DefaultLayout>
   <div
-    class="flex order-2 w-full lg:order-1 lg:top-0 lg:h-screen xl:w-3/12 2xl:w-2/12 lg:w-3/12 bg-gradient-to-tr from-cyan-400 to-blue-500 dark:from-cyan-600 dark:to-blue-600"
+    class="order-2 flex w-full bg-gradient-to-tr from-cyan-400 to-blue-500 dark:from-cyan-600 dark:to-blue-600 lg:top-0 lg:order-1 lg:h-screen lg:w-3/12 xl:w-3/12 2xl:w-2/12"
   >
     <Sidebar />
   </div>
   <main
-    class="flex-1 order-1 lg:flex lg:overflow-y-scroll lg:order-2 lg:w-9/12 xl:w-9/12 2xl:w-10/12 xl:bg-gray-900 grid-bg"
+    class="grid-bg order-1 flex-1 lg:order-2 lg:flex lg:w-9/12 lg:overflow-y-scroll xl:w-9/12 xl:bg-gray-900 2xl:w-10/12"
   >
     <div class="flex w-full">
-      <div class="bg-white xl:w-8/12 dark:bg-slate-600">
+      <div class="bg-white dark:bg-slate-600 xl:w-8/12">
         <Header />
         <slot />
       </div>

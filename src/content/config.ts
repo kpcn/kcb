@@ -5,7 +5,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     publishedAt: z.string(),
     summary: z.string(),
-    excerpt: z.string(),
+    excerpt: z.string().optional(),
     image: z
       .object({
         url: z.string().optional(),
@@ -15,6 +15,7 @@ const blogCollection = defineCollection({
       })
       .optional(),
     tags: z.array(z.string()).optional(),
+    // TODO: need to add `relatedPosts`
   }),
 });
 
