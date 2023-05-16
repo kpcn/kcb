@@ -11,7 +11,7 @@ export interface Props {
 const { metaData } = Astro.props;
 ---
 
-<DefaultLayout>
+<DefaultLayout metaData={metaData}>
   <div
     class="order-2 flex w-full bg-gradient-to-tr from-cyan-400 to-blue-500 dark:from-cyan-600 dark:to-blue-600 lg:top-0 lg:order-1 lg:h-screen lg:w-3/12 xl:w-3/12 2xl:w-2/12"
   >

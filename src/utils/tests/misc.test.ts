@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { kebabCase } from '../misc';
+import { kebabCase } from '../format';
 
 describe('misc', () => {
   it('return kebab case string', () => {

@@ -1,23 +1,13 @@
 ---
+export const prerender = true;
+
 import PageLayout from '@layouts/Page.astro';
 import PostItem from '@components/PostItem.astro';
-import { kebabCase } from '@utils/format';
-
-import { getCollection } from 'astro:content';
+import { getAllTags, getPostsByTag } from '@src/utils/content';
+import { kebabCase } from '@src/utils/format';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-
-  const tags = Array.from(
-    new Set(
-      blogEntries
-        .map((entry) => {
-          return entry.data.tags;
-        })
-        .flat()
-    )
-  );
-
+  const tags = await getAllTags();
   return tags.map((val) => {
     return {
       params: {
@@ -30,15 +20,24 @@ export async function getStaticPaths() {
   });
 }
 
+export interface Props {
+  name: string;
+}
+
 const { tag } = Astro.params;
-const postsByTag = await getCollection('blog', (posts) => {
-  return posts?.data?.tags?.some(
-    (val) => `tags/${kebabCase(val || '')}` === tag
-  );
-});
+const { name } = Astro.props;
+
+const postsByTag = await getPostsByTag(tag);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const metaData = {
+  title: `Posts tagged with ${name}`,
+  description: `Posts tagged with ${name}`,
+  url: canonicalURL.href,
+};
 ---
 
-<PageLayout metaData={{}}>
+<PageLayout metaData={metaData}>
   <div
     class="flex flex-col space-y-4 bg-white px-3 py-4 dark:bg-slate-600 md:px-6"
   >

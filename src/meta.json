@@ -1,0 +1,21 @@
+{
+  "title": "KC's Blog",
+  "description": "Some thoughts on the things I like, especially on Web Dev",
+  "name": "KC's Blog",
+  "image": "/images/kc-img.jpg",
+  "type": "profile",
+  "canonical": "https://kcnk.me",
+  "socialHandles": {
+    "twitter": "@kchancnk"
+  },
+  "keywords": [
+    "web",
+    "development",
+    "blog",
+    "astro",
+    "svelte",
+    "react",
+    "javascript",
+    "typescript"
+  ]
+}

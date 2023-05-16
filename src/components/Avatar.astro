@@ -6,10 +6,11 @@ export interface Props {
 }
 
 const { name } = Astro.props;
+const homePage = Astro.site;
 ---
 
 <div class="flex justify-center">
-  <a href="/">
+  <a href={homePage?.origin || '/'}>
     <Image
       src={`/images/icon.png`}
       width={150}
