@@ -1,25 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import Icon from './Icon.astro';
 import Tag from './Tags/Tag.astro';
-
-const blogEntries = await getCollection('blog');
-
-// TODO: to change more efficient way
-const tags = Array.from(
-  new Set(
-    blogEntries
-      .map((entry) => {
-        return entry.data.tags;
-      })
-      .flat()
-  )
-);
+import { getAllTags } from '@src/utils/content';
 
 interface Props {
   name?: string;
 }
 
+const tags = await getAllTags();
 const { name = '' } = Astro.props;
 ---
 

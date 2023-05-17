@@ -1,5 +1,5 @@
 {
-  "name": "pink-photon",
+  "name": "kcb",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -8,8 +8,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "astro": "astro",
     "test": "vitest",
-    "astro": "astro"
+    "test:e2e": "playwright test --reporter=list",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@astrojs/image": "0.16.6",
@@ -30,5 +32,9 @@
     "sharp": "0.32.1",
     "tailwindcss": "^3.3.2",
     "vitest": "0.31.0"
-  }
+  },
+  "devDependencies": {
+    "@playwright/test": "1.33.0"
+  },
+  "packageManager": "pnpm@7.30.0"
 }

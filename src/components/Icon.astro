@@ -18,9 +18,7 @@ function getSVG(name: string) {
   }
 
   const root = parse(files[filepath]);
-
   const svg = root.querySelector('svg');
-
   return {
     attributes: svg?.attributes,
     innerHTML: svg?.innerHTML,

@@ -1,10 +1,11 @@
 ---
 export const prerender = true;
 
+import { getCollection } from 'astro:content';
+
 import PageLayout from '@layouts/Page.astro';
 import PostItem from '@components/PostItem.astro';
 
-import { getCollection } from 'astro:content';
 const blogEntries = await getCollection('blog');
 ---
 
