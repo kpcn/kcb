@@ -1,0 +1,47 @@
+---
+import { isBlogPage, isTagsPage } from '@utils/misc';
+import PopoverFilters from './PopoverFilters.astro';
+import Icon from './Icon.astro';
+
+const pathname = new URL(Astro.request.url).pathname;
+
+const getTag = (url: string) => {
+  const name = url.split('/').slice(-2)[0];
+  if (!isBlogPage(url)) {
+    return '';
+  }
+  return name.split('-').join(' ') || 'All';
+};
+
+const tagName = getTag(pathname);
+---
+
+{
+  isBlogPage(pathname) ? (
+    <>
+      <button
+        id="back-btn"
+        class="antialiased text-lg font-thin tracking-wide uppercase text-gray-800 dark:text-slate-50"
+      >
+        <Icon icon="back" class="w-6 h-6" />
+      </button>
+      {isTagsPage(pathname) ? (
+        <>
+          <PopoverFilters name={tagName} />
+          <span class="text-lg font-thin tracking-wide uppercase dark:text-slate-50">
+            Posts
+          </span>
+        </>
+      ) : (
+        <PopoverFilters name="Tags" />
+      )}
+    </>
+  ) : (
+    <>
+      <PopoverFilters name="All" />
+      <span class="text-lg font-thin tracking-wide uppercase dark:text-slate-50">
+        Posts
+      </span>
+    </>
+  )
+}

@@ -4,7 +4,7 @@ export const prerender = true;
 import PageLayout from '@layouts/Page.astro';
 import PostItem from '@components/PostItem.astro';
 import { getAllTags, getPostsByTag } from '@src/utils/content';
-import { kebabCase } from '@src/utils/format';
+import { kebabCase } from '@utils/format';
 
 export async function getStaticPaths() {
   const tags = await getAllTags();
