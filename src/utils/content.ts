@@ -15,6 +15,7 @@ export const getPostsByTag = (tag?: string) => {
 
 export const getAllTags = async () => {
   const blogEntries = await getCollection('blog');
+  // TODO: to change more efficient way
   return Array.from(
     new Set(
       blogEntries
