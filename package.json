@@ -35,5 +35,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.33.0"
-  }
+  },
+  "packageManager": "pnpm@7.30.0"
 }
