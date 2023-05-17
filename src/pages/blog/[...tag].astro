@@ -3,19 +3,18 @@ export const prerender = true;
 
 import PageLayout from '@layouts/Page.astro';
 import PostItem from '@components/PostItem.astro';
-import { getAllTags, getPostsByTag } from '@src/utils/content';
-import { kebabCase } from '@utils/format';
+import {
+  getAllTags,
+  getPostsByTag,
+  urlFragmentFromTagName,
+} from '@src/utils/content';
 
 export async function getStaticPaths() {
   const tags = await getAllTags();
   return tags.map((val) => {
     return {
-      params: {
-        tag: `tags/${kebabCase(val || '')}`,
-      },
-      props: {
-        name: val,
-      },
+      params: { tag: urlFragmentFromTagName(val) },
+      props: { name: val },
     };
   });
 }

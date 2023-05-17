@@ -7,7 +7,7 @@ export const kebabCase = (str: string) =>
 export const kebabCaseToText = (str: string) => str.split('-').join(' ');
 
 export const createSlug = (tag: string) => {
-  return `/blog/tags/${kebabCase(tag)}`;
+  return `/blog/tags/${kebabCase(tag)}/`;
 };
 
 export const formatDate = (date: string) =>

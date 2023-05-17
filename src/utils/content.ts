@@ -2,10 +2,13 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import { kebabCase } from './format';
 
+export const urlFragmentFromTagName = (tag: string = '') =>
+  `tags/${kebabCase(tag)}`;
+
 export const getPostsByTag = (tag?: string) => {
   return getCollection('blog', (posts) => {
     return posts?.data?.tags?.some(
-      (val) => `tags/${kebabCase(val || '')}` === tag
+      (val) => urlFragmentFromTagName(val) === tag
     );
   });
 };
