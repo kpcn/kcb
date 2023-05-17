@@ -1,13 +1,5 @@
 import path from 'path';
 
-export const isBlogPage = (pathname: string) => {
-  return pathname.match(/\/blog\//g);
-};
-
-export const isTagsPage = (pathname: string) => {
-  return pathname.match(/\/tags\//g);
-};
-
 // TODO: to refactor this workaround
 export const dynamicViteAssetImport = (
   imageFileName: string,
