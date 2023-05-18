@@ -1,0 +1,40 @@
+---
+import Icon from '@components/Icon.astro';
+---
+
+<div class="flex items-center">
+  <a
+    href="/"
+    class="text-md md:text-lg tracking-wide font-light uppercase dark:text-slate-50"
+  >
+    Home</a
+  >
+</div>
+<div class="flex items-center text-lg font-light tracking-wide uppercase">
+  <button id="dark-mode-btn" class="antialiased flex">
+    <Icon
+      icon="light-bulb"
+      class="w-6 h-6 md:w-7 md:h-7 text-gray-800 dark:text-slate-50"
+    />
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = '@kcb-theme';
+
+  const darkModeBtn = document.getElementById('dark-mode-btn');
+
+  darkModeBtn?.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem(STORAGE_KEY);
+    if (currentTheme === 'light') {
+      localStorage.setItem(STORAGE_KEY, 'dark');
+
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      localStorage.setItem(STORAGE_KEY, 'light');
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  });
+</script>

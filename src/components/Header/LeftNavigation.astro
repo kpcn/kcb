@@ -1,6 +1,6 @@
 ---
 import PopoverFilters from './PopoverFilters.astro';
-import Icon from './Icon.astro';
+import Icon from '@components/Icon.astro';
 
 import { getTagName, isBlogRelatedUrl, isTagsPage, isBlogUrl } from '@utils/url';
 
@@ -37,3 +37,10 @@ const name = getTagName(pathname);
     </>
   )
 }
+
+<script is:inline>
+  const backBtn = document.getElementById('back-btn');
+  backBtn?.addEventListener('click', () => {
+    window.history.go(-1);
+  });
+</script>
