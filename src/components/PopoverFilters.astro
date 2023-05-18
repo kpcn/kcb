@@ -11,18 +11,18 @@ const tags = await getAllTags();
 const { name = '' } = Astro.props;
 ---
 
-<div>
+<>
   <button
     data-popover="popover-tags"
     type="button"
-    class="pb-1 italic text-lg tracking-wide dark:text-slate-50 font-light uppercase border-b border-gray-500 border-dashed"
+    class="pr-1 md:pr-0 italic text-md md:text-lg truncate text-ellipsis max-w-[110px] xs:max-w-none tracking-wide dark:text-slate-50 uppercase border-b border-gray-500 border-dashed"
     >{name}</button
   >
   <div
     data-popover-target="popover-tags"
     id="popover-default"
     role="tooltip"
-    class="absolute invisible z-20 max-w-md px-5 pt-5 pb-4 mt-1 mr-6 space-y-2 bg-white rounded-md shadow-md md:mr-0 dark:bg-slate-800"
+    class="absolute hidden z-20 left-0 xs:left-6 top-0 xs:top-14 m-0 md:mt-1  w-full xs:max-w-md px-5 pt-5 pb-4 space-y-2 bg-white xs:rounded-md shadow-xl xs:shadow-md md:mr-0 dark:bg-slate-800"
   >
     <div class="flex items-start justify-between">
       <div class="text-sm font-normal dark:text-slate-50">TAGS</div>
@@ -52,7 +52,7 @@ const { name = '' } = Astro.props;
       </div>
     </div>
   </div>
-</div>
+</>
 
 <script>
   const popoverButton = document.querySelector<HTMLButtonElement>(
@@ -66,11 +66,11 @@ const { name = '' } = Astro.props;
 
   popoverButton?.addEventListener('click', (event) => {
     event.stopPropagation();
-    popoverPanel?.classList.toggle('invisible');
+    popoverPanel?.classList.toggle('hidden');
   });
 
   popoverCloseBtn?.addEventListener('click', (event) => {
     event.stopPropagation();
-    popoverPanel?.classList.toggle('invisible');
+    popoverPanel?.classList.toggle('hidden');
   });
 </script>
