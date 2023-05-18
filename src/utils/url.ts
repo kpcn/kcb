@@ -8,10 +8,7 @@ export const isTagsPage = (pathname: string) => {
   return pathname.match(/\/tags\//g);
 };
 
-export const getTagName = (
-  url: string,
-  defaultReturnString: string = 'All'
-) => {
+export const getTagName = (url: string, defaultReturnString = 'All') => {
   const name = url.split('/').slice(-2)[0];
   if (!isBlogRelatedUrl(url)) {
     return '';
