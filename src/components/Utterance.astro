@@ -6,17 +6,35 @@
 <script>
 	const script = document.createElement('script');
 	const container = document.querySelector('#utterances-container');
+	const currentTheme = localStorage.getItem('theme');
 
 	Object.entries({
 		src: 'https://utteranc.es/client.js',
 		repo: 'kpcn/kcb',
 		'issue-term': 'pathname',
 		label: 'post comments',
-		theme: 'github-dark',
+		theme: currentTheme == 'light' ? 'github-light' : 'github-dark',
 		crossorigin: 'anonymous',
 	}).forEach(([key, value]) => {
 		script.setAttribute(key, value);
 	});
 
 	container?.appendChild(script);
+
+	// TODO: need to move this to theme toggler script
+	// const toggleUtterancesTheme = () => {
+	// 	if (document.querySelector('.utterances-frame')) {
+	// 		const theme =
+	// 			localStorage.getItem('theme') === 'light'
+	// 				? 'github-light'
+	// 				: 'github-dark';
+	// 		const message = {
+	// 			type: 'set-theme',
+	// 			theme,
+	// 		};
+	// 		const iframe = document.querySelector('.utterances-frame');
+	// 		// @ts-ignore
+	// 		iframe?.contentWindow?.postMessage(message, 'https://utteranc.es');
+	// 	}
+	// };
 </script>
