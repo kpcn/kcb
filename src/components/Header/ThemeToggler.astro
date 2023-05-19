@@ -6,12 +6,12 @@ import Icon from '@components/Icon.astro';
 	<Icon
 		id="theme-toggle-light-icon"
 		icon="light-bulb"
-		class="hidden w-6 h-6 md:w-7 md:h-7 text-gray-800 dark:text-slate-50"
+		class="hidden w-6 h-6 md:w-7 md:h-7 text-gray-800 dark:text-slate-50 rotate-180"
 	/>
 	<Icon
 		id="theme-toggle-dark-icon"
 		icon="close-light-bulb"
-		class="hidden w-6 h-6 md:w-5 md:h-5 text-gray-800 dark:text-slate-50"
+		class="ml-1 hidden w-5 h-5 md:w-5 md:h-5 text-gray-800 dark:text-slate-50 rotate-180"
 	/>
 </button>
 
@@ -19,7 +19,6 @@ import Icon from '@components/Icon.astro';
 	const STORAGE_KEY = '@kcb-theme';
 
 	const darkModeBtn = document.getElementById('dark-mode-btn');
-
 	const themeDarkIcon = document.getElementById('theme-toggle-dark-icon');
 	const themeLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -35,19 +34,23 @@ import Icon from '@components/Icon.astro';
 		themeLightIcon.classList.remove('hidden');
 	}
 
-	darkModeBtn?.addEventListener('click', () => {
+	const handleOnClickReadingModeToggle = () => {
 		themeDarkIcon.classList.toggle('hidden');
 		themeLightIcon.classList.toggle('hidden');
+
+		const rootElement = document.documentElement;
 		const currentTheme = localStorage.getItem(STORAGE_KEY);
 		if (currentTheme === 'light') {
 			localStorage.setItem(STORAGE_KEY, 'dark');
 
-			document.documentElement.classList.add('dark');
-			document.documentElement.classList.remove('light');
+			rootElement.classList.add('dark');
+			rootElement.classList.remove('light');
 		} else {
 			localStorage.setItem(STORAGE_KEY, 'light');
-			document.documentElement.classList.add('light');
-			document.documentElement.classList.remove('dark');
+			rootElement.classList.add('light');
+			rootElement.classList.remove('dark');
 		}
-	});
+	};
+
+	darkModeBtn?.addEventListener('click', handleOnClickReadingModeToggle);
 </script>
