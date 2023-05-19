@@ -3,8 +3,8 @@ import Icon from '@components/Icon.astro';
 import Tag from '@components/Tags/Tag.astro';
 import { getAllTags } from '@utils/content';
 
-interface Props {
-  name?: string;
+export interface Props {
+	name?: string;
 }
 
 const tags = await getAllTags();
@@ -12,65 +12,65 @@ const { name = '' } = Astro.props;
 ---
 
 <>
-  <button
-    data-popover="popover-tags"
-    type="button"
-    class="pr-1 md:pr-0 italic text-md md:text-lg truncate text-ellipsis max-w-[110px] xs:max-w-none tracking-wide dark:text-slate-50 uppercase border-b border-gray-500 border-dashed"
-    >{name}</button
-  >
-  <div
-    data-popover-target="popover-tags"
-    id="popover-default"
-    role="tooltip"
-    class="absolute hidden z-20 left-0 xs:left-6 top-0 xs:top-14 m-0 md:mt-1  w-full xs:max-w-md px-5 pt-5 pb-4 space-y-2 bg-white xs:rounded-md shadow-xl xs:shadow-md md:mr-0 dark:bg-slate-800"
-  >
-    <div class="flex items-start justify-between">
-      <div class="text-sm font-normal dark:text-slate-50">TAGS</div>
-      <button
-        id="popover-close-btn"
-        class="text-gray-500 hover:text-gray-700 dark:text-slate-50"
-      >
-        <Icon icon="close" class="w-6 h-6 dark:text-slate-50" />
-      </button>
-    </div>
-    <div class="px-3 py-2">
-      <div class="flex flex-wrap">
-        <Tag
-          name="home"
-          display="All"
-          class="inline-block px-3 py-1 mb-2 mr-2 text-xs font-medium text-justify text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
-        />
-        {
-          tags.map((tag) => (
-            <Tag
-              name={tag || ''}
-              display={tag || ''}
-              class="inline-block text-xs text-justify mr-2 px-3 py-1 mb-2 font-medium text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
-            />
-          ))
-        }
-      </div>
-    </div>
-  </div>
+	<button
+		data-popover="popover-tags"
+		type="button"
+		class="pr-1 md:pr-0 italic text-md md:text-lg truncate text-ellipsis max-w-[110px] xs:max-w-none tracking-wide dark:text-slate-50 uppercase border-b border-gray-500 border-dashed"
+		>{name}</button
+	>
+	<div
+		data-popover-target="popover-tags"
+		id="popover-default"
+		role="tooltip"
+		class="absolute hidden z-20 left-0 xs:left-6 top-0 xs:top-14 m-0 md:mt-1 w-full xs:max-w-md px-5 pt-5 pb-4 space-y-2 bg-white xs:rounded-md shadow-xl xs:shadow-md md:mr-0 dark:bg-slate-800"
+	>
+		<div class="flex items-start justify-between">
+			<div class="text-sm font-normal dark:text-slate-50">TAGS</div>
+			<button
+				id="popover-close-btn"
+				class="text-gray-500 hover:text-gray-700 dark:text-slate-50"
+			>
+				<Icon icon="close" class="w-6 h-6 dark:text-slate-50" />
+			</button>
+		</div>
+		<div class="px-3 py-2">
+			<div class="flex flex-wrap">
+				<Tag
+					name="home"
+					display="All"
+					class="inline-block px-3 py-1 mb-2 mr-2 text-xs font-medium text-justify text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
+				/>
+				{
+					tags.map((tag) => (
+						<Tag
+							name={tag}
+							display={tag}
+							class="inline-block text-xs text-justify mr-2 px-3 py-1 mb-2 font-medium text-gray-700 dark:text-gray-50 bg-gray-200 dark:bg-slate-700 rounded-3xl"
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
 </>
 
 <script>
-  const popoverButton = document.querySelector<HTMLButtonElement>(
-    '[data-popover="popover-tags"]'
-  );
-  const popoverPanel = document.querySelector<HTMLDivElement>(
-    '[data-popover-target="popover-tags"]'
-  );
-  const popoverCloseBtn =
-    document.querySelector<HTMLButtonElement>('#popover-close-btn');
+	const popoverButton = document.querySelector<HTMLButtonElement>(
+		'[data-popover="popover-tags"]'
+	);
+	const popoverPanel = document.querySelector<HTMLDivElement>(
+		'[data-popover-target="popover-tags"]'
+	);
+	const popoverCloseBtn =
+		document.querySelector<HTMLButtonElement>('#popover-close-btn');
 
-  popoverButton?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    popoverPanel?.classList.toggle('hidden');
-  });
+	popoverButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		popoverPanel?.classList.toggle('hidden');
+	});
 
-  popoverCloseBtn?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    popoverPanel?.classList.toggle('hidden');
-  });
+	popoverCloseBtn?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		popoverPanel?.classList.toggle('hidden');
+	});
 </script>
