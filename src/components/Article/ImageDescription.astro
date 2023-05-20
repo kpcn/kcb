@@ -1,0 +1,29 @@
+---
+interface Props {
+	name: string | undefined;
+	link: string | undefined;
+}
+
+const { name, link } = Astro.props;
+---
+
+{
+	name && (
+		<span class="inline-block w-full text-center text-xs sm:text-sm font-thin italic text-gray-400 dark:text-slate-400">
+			Photo by{' '}
+			<a
+				href={link}
+				class="border-b border-dashed border-gray-300 dark:border-slate-500"
+			>
+				{name}
+			</a>
+			on
+			<a
+				href="https://unsplash.com"
+				class="border-b border-dashed border-gray-300 dark:border-slate-500"
+			>
+				Unsplash
+			</a>
+		</span>
+	)
+}

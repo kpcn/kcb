@@ -19,3 +19,14 @@ export const getSVG = (name: string) => {
 		innerHTML: svg?.innerHTML,
 	};
 };
+
+// TODO: refactor this to be more generic but specific to the use case, need to give the hint which item can be picked
+export const pick = <T>(obj: T | undefined, keys: Array<keyof T>) => {
+	if (!obj) return {};
+	return keys.reduce((acc, key) => {
+		if (obj[key]) {
+			acc[key] = obj[key];
+		}
+		return acc;
+	}, {} as T);
+};

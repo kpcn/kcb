@@ -1,53 +1,22 @@
 ---
-import HeroImage from '@components/HeroImage.astro';
-import Icon from '@components/Icon.astro';
-import { formatDate } from '@utils/format';
-
 interface Props {
-  title: string;
-  publishedAt: string;
-  readingTime: string;
-  image?: {
-    url?: string;
-    alt?: string;
-    credit?: string;
-    creditlink?: string;
-  };
+	title: string;
 }
 
-const { title, publishedAt, readingTime, image } = Astro.props;
-const formattedPublishedDate = formatDate(publishedAt);
+const { title } = Astro.props;
 ---
 
 <header class="py-2">
-  <h1 class="pb-1 pt-2 text-lg md:text-xl lg:text-2xl dark:text-slate-50">
-    {title}
-  </h1>
-  <div
-    class="flex items-center justify-between sm:justify-normal sm:space-x-7 py-1 pb-4 text-gray-500 dark:text-slate-50"
-  >
-    <div class="flex items-center space-x-1 sm:space-x-2">
-      <Icon icon="calendar" class="w-4 h-4 sm:w-5 sm:h-5" />
-      <span class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base">
-        {formattedPublishedDate}
-      </span>
-    </div>
-    <div class="flex items-center space-x-1 sm:space-x-2">
-      <Icon icon="clock" class="w-4 h-4 sm:w-5 sm:h-5" />
-      <span class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base">
-        {readingTime}
-      </span>
-    </div>
-  </div>
-  {
-    image && (
-      <HeroImage
-        src={image.url}
-        alt={image.alt}
-        name={image.credit}
-        link={image.creditlink}
-      />
-    )
-  }
-  <slot />
+	<h1 class="pb-1 pt-2 text-lg md:text-xl lg:text-2xl dark:text-slate-50">
+		{title}
+	</h1>
+	<div
+		class="flex items-center justify-between sm:justify-normal sm:space-x-7 py-1 pb-4 text-gray-500 dark:text-slate-50"
+	>
+		<slot name="meta" />
+	</div>
+	<slot name="image" />
+	<div class="flex">
+		<slot />
+	</div>
 </header>

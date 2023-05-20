@@ -1,0 +1,31 @@
+---
+import { DEFAULT_DIMENSIONS } from '@utils/meta';
+import { Image } from '@astrojs/image/components';
+import ImageDescription from './ImageDescription.astro';
+
+const { width: defaultWidth, height: defaultHeight } = DEFAULT_DIMENSIONS;
+
+interface Props {
+	config: Record<string, string> | undefined;
+}
+
+const { config } = Astro.props;
+const { url, alt, width, height, name, link } = config || {};
+---
+
+<>
+	{
+		url && (
+			<Image
+				aspectRatio="1:1"
+				format="webp"
+				width={parseInt(width) || defaultWidth}
+				height={parseInt(height) || defaultHeight}
+				alt={alt}
+				src={url}
+				class="rounded-md object-cover"
+			/>
+		)
+	}
+	<ImageDescription name={name} link={link} />
+</>
