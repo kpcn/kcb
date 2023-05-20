@@ -2,10 +2,10 @@
 import '@styles/base.css';
 import type { SeoMetaData } from '@utils/meta';
 
-import Seo from '@src/components/Seo.astro';
+import Seo from '@components/Seo.astro';
 
 export interface Props {
-  metaData?: SeoMetaData;
+	metaData?: SeoMetaData;
 }
 
 const { metaData } = Astro.props;
@@ -13,41 +13,41 @@ const { metaData } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <Seo data={metaData} />
-  </head>
-  <body>
-    <div class="flex h-screen flex-col lg:flex-row">
-      <slot />
-    </div>
-    <script>
-      const STORAGE_KEY = '@kcb-theme';
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<Seo data={metaData} />
+	</head>
+	<body>
+		<div class="flex h-screen flex-col lg:flex-row">
+			<slot />
+		</div>
+		<script>
+			const STORAGE_KEY = '@kcb-theme';
 
-      const theme = (() => {
-        if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem(STORAGE_KEY)
-        ) {
-          return localStorage.getItem(STORAGE_KEY);
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
+			const theme = (() => {
+				if (
+					typeof localStorage !== 'undefined' &&
+					localStorage.getItem(STORAGE_KEY)
+				) {
+					return localStorage.getItem(STORAGE_KEY);
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
 
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
-      }
+			if (theme === 'light') {
+				document.documentElement.classList.remove('dark');
+			} else {
+				document.documentElement.classList.add('dark');
+			}
 
-      window.localStorage.setItem(STORAGE_KEY, theme || 'light');
-    </script>
-  </body>
+			window.localStorage.setItem(STORAGE_KEY, theme || 'light');
+		</script>
+	</body>
 </html>

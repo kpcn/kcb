@@ -6,7 +6,7 @@ import Tags from '@components/Tags/Tags.astro';
 import Image from '@components/Article/Image.astro';
 import { CollectionEntry, getCollection } from 'astro:content';
 import ArticleHeader from '@components/Article/Header.astro';
-import HeaderMetaData from '@src/components/Article/HeaderMetaData.astro';
+import HeaderMetaData from '@components/Article/HeaderMetaData.astro';
 
 export async function getStaticPaths() {
 	const entries = await getCollection('blog');
