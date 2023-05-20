@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { isBlogRelatedUrl, isBlogUrl, isTagsUrl } from '@utils/url';
+import { getTagName, isBlogRelatedUrl, isBlogUrl, isTagsUrl } from '@utils/url';
 import { canonical } from '@src/meta.json';
+import { kebabCaseToText } from '../format';
 
 describe('utils:url functions', () => {
 	let blogPostUrl: string, tagsUrl: string, tag: string, slug: string;
@@ -29,6 +30,13 @@ describe('utils:url functions', () => {
 	describe('isTagsUrl', () => {
 		it('return true when url is tags url', () => {
 			expect(isTagsUrl(tagsUrl)).toBe(true);
+		});
+	});
+
+	describe('getTagName', () => {
+		it('return tag name when url is tags url', () => {
+			const name = kebabCaseToText(tag);
+			expect(getTagName(tagsUrl)).toBe(name);
 		});
 	});
 });
