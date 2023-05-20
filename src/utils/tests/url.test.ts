@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { isBlogRelatedUrl, isBlogUrl } from '@utils/url';
+import { isBlogRelatedUrl, isBlogUrl, isTagsUrl } from '@utils/url';
 import { canonical } from '@src/meta.json';
 
 describe('utils:url functions', () => {
@@ -7,8 +7,8 @@ describe('utils:url functions', () => {
 	beforeEach(() => {
 		tag = 'tag-name-01';
 		slug = 'post-name';
-		blogPostUrl = `${canonical}/blog/${slug}`;
-		tagsUrl = `${canonical}/blog/tags/${tag}`;
+		blogPostUrl = `${canonical}/blog/${slug}/`;
+		tagsUrl = `${canonical}/blog/tags/${tag}/`;
 	});
 	describe('isBlogRelatedUrl', () => {
 		it('return true when url is blog related', () => {
@@ -23,6 +23,12 @@ describe('utils:url functions', () => {
 		});
 		it('return false when url is not blog post url', () => {
 			expect(isBlogUrl(tagsUrl)).toBe(false);
+		});
+	});
+
+	describe('isTagsUrl', () => {
+		it('return true when url is tags url', () => {
+			expect(isTagsUrl(tagsUrl)).toBe(true);
 		});
 	});
 });

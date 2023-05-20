@@ -5,8 +5,9 @@ export const isBlogRelatedUrl = (pathname: string) => {
 	return regexRule.test(pathname);
 };
 
-export const isTagsPage = (pathname: string) => {
-	return pathname.match(/\/blog\/tags\//g);
+export const isTagsUrl = (pathname: string) => {
+	const regexRule = /\/blog\/tags\//g;
+	return regexRule.test(pathname);
 };
 
 export const isBlogUrl = (pathname: string) => {
