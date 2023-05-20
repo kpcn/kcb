@@ -11,17 +11,17 @@ describe('utils:url functions', () => {
 		tagsUrl = `${canonical}/blog/tags/${tag}`;
 	});
 	describe('isBlogRelatedUrl', () => {
-		it.skip('return truthy state when url is blog related', () => {
-			expect(isBlogRelatedUrl(blogPostUrl)).toBeTruthy();
-			expect(isBlogRelatedUrl(tagsUrl)).toBeTruthy();
+		it('return true when url is blog related', () => {
+			expect(isBlogRelatedUrl(blogPostUrl)).toBe(true);
+			expect(isBlogRelatedUrl(tagsUrl)).toBe(true);
 		});
 	});
 
 	describe('isBlogUrl', () => {
-		it('return truthy state when url is blog post url', () => {
+		it('return true when url is blog post url', () => {
 			expect(isBlogUrl(blogPostUrl)).toBe(true);
 		});
-		it('return falsy state when url is not blog post url', () => {
+		it('return false when url is not blog post url', () => {
 			expect(isBlogUrl(tagsUrl)).toBe(false);
 		});
 	});

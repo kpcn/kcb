@@ -1,7 +1,8 @@
 import { kebabCaseToText } from './format';
 
 export const isBlogRelatedUrl = (pathname: string) => {
-	return pathname.match(/\/blog\//g);
+	const regexRule = /\/blog\//g;
+	return regexRule.test(pathname);
 };
 
 export const isTagsPage = (pathname: string) => {
