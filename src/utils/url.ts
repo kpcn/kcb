@@ -17,6 +17,6 @@ export const isBlogUrl = (pathname: string) => {
 
 export const getTagName = (url: string, defaultReturnString = 'All') => {
 	const name = url.split('/').slice(-2)[0];
-	if (!isBlogRelatedUrl(url)) return '';
+	if (!isTagsUrl(url)) return defaultReturnString;
 	return kebabCaseToText(name) || defaultReturnString;
 };

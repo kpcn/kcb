@@ -38,5 +38,10 @@ describe('utils:url functions', () => {
 			const name = kebabCaseToText(tag);
 			expect(getTagName(tagsUrl)).toBe(name);
 		});
+
+		it('return fallback to default string when url is not tags url', () => {
+			const defaultString = 'All';
+			expect(getTagName(blogPostUrl, defaultString)).toBe(defaultString);
+		});
 	});
 });
