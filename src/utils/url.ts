@@ -9,9 +9,8 @@ export const isTagsPage = (pathname: string) => {
 };
 
 export const isBlogUrl = (pathname: string) => {
-	if (pathname.match(/\/blog\/[a-zA-Z0-9-]+\/$/g)) {
-		return true;
-	}
+	const regexRule = /\/blog\/+(?!tags)[a-zA-Z0-9]/g;
+	return regexRule.test(pathname);
 };
 
 export const getTagName = (url: string, defaultReturnString = 'All') => {
