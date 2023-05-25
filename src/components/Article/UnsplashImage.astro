@@ -1,0 +1,52 @@
+---
+import { Image } from '@astrojs/image/components';
+import ImageDescription from './ImageDescription.astro';
+import { getPhoto } from '@utils/unsplash';
+import { DEFAULT_DIMENSIONS } from '@utils/meta';
+
+const { width: defaultWidth, height: defaultHeight } = DEFAULT_DIMENSIONS;
+
+interface Props {
+	config: Record<string, string> | undefined;
+	rorate: boolean | false;
+}
+
+const { config, rorate } = Astro.props;
+const { photoId } = config || {};
+const { alt, url, name, link, error } = (await getPhoto(photoId)) || {};
+
+const joinWithPlusSign = (str = '') => str.split(' ').join('+');
+---
+
+<>
+	{
+		error && (
+			<>
+				<Image
+					src={`https://placehold.co/600x400?font=playfair-display&text=${joinWithPlusSign(
+						error
+					)}+on+Unsplash`}
+					alt="Not Found on Unsplash"
+					width={defaultWidth}
+					height={defaultHeight}
+					class="rounded-md object-cover"
+				/>
+			</>
+		)
+	}
+	{
+		url && (
+			<Image
+				src={url}
+				alt={alt || ''}
+				width={defaultWidth}
+				height={defaultHeight}
+				class={`rounded-md object-cover ${
+					rorate ? 'transform rotate-180' : ''
+				}`}
+			/>
+		)
+	}
+
+	<ImageDescription name={name} link={link} />
+</>

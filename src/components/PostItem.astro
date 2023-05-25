@@ -17,31 +17,34 @@ const formattedPublishedDate = formatDate(data?.publishedAt);
 ---
 
 <article
+  role="listitem"
   id={id}
-  class="flex w-full flex-col space-y-2 px-3 py-2 hover:bg-gradient-to-t hover:from-white hover:to-slate-50 hover:shadow-sm dark:hover:from-slate-600 dark:hover:to-slate-700 dark:hover:shadow-sm md:rounded-md"
+  class="flex w-full flex-col space-y-1 px-3 py-2 hover:bg-gradient-to-t hover:from-white hover:to-slate-50 hover:shadow-sm dark:hover:from-slate-600 dark:hover:to-slate-700 dark:hover:shadow-sm md:rounded-md"
 >
   <a href={`/blog/${slug}`} class="cursor-pointer">
     <h1
-      class="mb-1 font-firamono text-xl font-semibold tracking-wide text-gray-600 antialiased dark:text-slate-50"
+      class="mb-1 font-firamono text-lg md:text-xl font-semibold tracking-wide text-gray-600 antialiased dark:text-slate-50"
     >
       {data.title}
     </h1>
     <div
-      class="flex items-center space-x-7 py-1 text-gray-500 dark:text-slate-50"
+      class="flex items-center justify-between sm:justify-normal sm:space-x-7 py-1 pb-2 sm:pb-4 text-gray-500 dark:text-slate-50"
     >
-      <div class="flex items-center space-x-2">
-        <Icon icon="calendar" class="h-5 w-5" />
-        <span class="italic">{formattedPublishedDate}</span>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <Icon icon="calendar" class="w-4 h-4 sm:w-5 sm:h-5" />
+        <span class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base">
+          {formattedPublishedDate}
+        </span>
       </div>
-      <div class="flex items-center space-x-2">
-        <Icon icon="clock" class="h-5 w-5" />
-        <span class="italic">
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <Icon icon="clock" class="w-4 h-4 sm:w-5 sm:h-5" />
+        <span class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base">
           {remarkPluginFrontmatter.minutesToRead}
         </span>
       </div>
     </div>
     <p
-      class="py-1 font-firamono text-lg font-normal text-slate-700 antialiased dark:text-slate-50"
+      class="font-firamono text-md md:text-lg font-normal text-slate-700 antialiased dark:text-slate-50"
     >
       {data.excerpt}
     </p>

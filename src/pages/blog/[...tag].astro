@@ -4,23 +4,23 @@ export const prerender = true;
 import PageLayout from '@layouts/Page.astro';
 import PostItem from '@components/PostItem.astro';
 import {
-  getAllTags,
-  getPostsByTag,
-  urlFragmentFromTagName,
-} from '@src/utils/content';
+	getAllTags,
+	getPostsByTag,
+	urlFragmentFromTagName,
+} from '@utils/content';
 
 export async function getStaticPaths() {
-  const tags = await getAllTags();
-  return tags.map((val) => {
-    return {
-      params: { tag: urlFragmentFromTagName(val) },
-      props: { name: val },
-    };
-  });
+	const tags = await getAllTags();
+	return tags.map((val) => {
+		return {
+			params: { tag: urlFragmentFromTagName(val) },
+			props: { name: val },
+		};
+	});
 }
 
 export interface Props {
-  name: string;
+	name: string;
 }
 
 const { tag } = Astro.params;
@@ -30,16 +30,16 @@ const postsByTag = await getPostsByTag(tag);
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const metaData = {
-  title: `Posts tagged with ${name}`,
-  description: `Posts tagged with ${name}`,
-  url: canonicalURL.href,
+	title: `Posts tagged with ${name}`,
+	description: `Posts tagged with ${name}`,
+	url: canonicalURL.href,
 };
 ---
 
 <PageLayout metaData={metaData}>
-  <div
-    class="flex flex-col space-y-4 bg-white px-3 py-4 dark:bg-slate-600 md:px-6"
-  >
-    {postsByTag.map((post) => <PostItem post={post} />)}
-  </div>
+	<div
+		class="flex flex-col md:space-y-2 bg-white px-3 py-4 dark:bg-slate-600 md:px-6"
+	>
+		{postsByTag.map((post) => <PostItem post={post} />)}
+	</div>
 </PageLayout>

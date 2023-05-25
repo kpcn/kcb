@@ -6,7 +6,7 @@ import { SEO } from 'astro-seo';
 import { getMetaData } from '@utils/meta';
 
 export interface Props {
-  data?: SeoMetaData;
+	data?: SeoMetaData;
 }
 
 const { data } = Astro.props;
@@ -14,27 +14,27 @@ const { title, description, type, socialHandles, image } = getMetaData(data);
 ---
 
 <SEO
-  title={title}
-  description={description}
-  openGraph={{
-    basic: {
-      title,
-      type,
-      image,
-    },
-  }}
-  twitter={{
-    creator: socialHandles?.twitter,
-  }}
-  extend={{
-    link: [{ rel: 'icon', href: '/favicon.png' }],
-    meta: [
-      {
-        name: 'twitter:image',
-        content: image,
-      },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-    ],
-  }}
+	title={title}
+	description={description}
+	openGraph={{
+		basic: {
+			title,
+			type,
+			image,
+		},
+	}}
+	twitter={{
+		creator: socialHandles?.twitter,
+	}}
+	extend={{
+		link: [{ rel: 'icon', href: '/favicon.png' }],
+		meta: [
+			{
+				name: 'twitter:image',
+				content: image,
+			},
+			{ name: 'twitter:title', content: title },
+			{ name: 'twitter:description', content: description },
+		],
+	}}
 />

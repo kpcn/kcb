@@ -1,0 +1,24 @@
+---
+import type { z } from 'astro:content';
+import type { imageProvider } from '@utils/schemas';
+import UnsplashImage from './UnsplashImage.astro';
+import LocalImage from './LocalImage.astro';
+
+export type ImageProvider = z.infer<typeof imageProvider>;
+
+interface Props {
+	image?: ImageProvider;
+}
+
+const { image } = Astro.props;
+const { provider, config } = image || {};
+---
+
+<>
+	{
+		provider === ('unsplash' as const) && (
+			<UnsplashImage config={config} rorate={true} />
+		)
+	}
+	{provider === ('local' as const) && <LocalImage config={config} />}
+</>

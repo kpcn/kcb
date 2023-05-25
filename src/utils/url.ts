@@ -1,20 +1,22 @@
 import { kebabCaseToText } from './format';
 
 export const isBlogRelatedUrl = (pathname: string) => {
-  return pathname.match(/\/blog\//g);
+	const regexRule = /\/blog\//g;
+	return regexRule.test(pathname);
 };
 
-export const isTagsPage = (pathname: string) => {
-  return pathname.match(/\/tags\//g);
+export const isTagsUrl = (pathname: string) => {
+	const regexRule = /\/blog\/tags\//g;
+	return regexRule.test(pathname);
 };
 
-export const getTagName = (
-  url: string,
-  defaultReturnString: string = 'All'
-) => {
-  const name = url.split('/').slice(-2)[0];
-  if (!isBlogRelatedUrl(url)) {
-    return '';
-  }
-  return kebabCaseToText(name) || defaultReturnString;
+export const isBlogUrl = (pathname: string) => {
+	const regexRule = /\/blog\/+(?!tags)[a-zA-Z0-9]/g;
+	return regexRule.test(pathname);
+};
+
+export const getTagName = (url: string, defaultReturnString = 'All') => {
+	const name = url.split('/').slice(-2)[0];
+	if (!isTagsUrl(url)) return defaultReturnString;
+	return kebabCaseToText(name) || defaultReturnString;
 };

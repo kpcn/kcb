@@ -1,0 +1,30 @@
+---
+import Icon from '@components/Icon.astro';
+
+import { formatDate } from '@utils/format';
+
+interface Props {
+	publishedDate: string;
+	readingTime: string;
+}
+
+const { readingTime, publishedDate } = Astro.props;
+const formattedPublishedDate = formatDate(publishedDate);
+---
+
+<div class="flex items-center space-x-1 sm:space-x-2">
+	<Icon icon="calendar" class="w-4 h-4 sm:w-5 sm:h-5" />
+	<span
+		class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base"
+	>
+		{formattedPublishedDate}
+	</span>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+	<Icon icon="clock" class="w-4 h-4 sm:w-5 sm:h-5" />
+	<span
+		class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base"
+	>
+		{readingTime}
+	</span>
+</div>

@@ -1,33 +1,32 @@
-import path from 'path';
+import { parse } from 'node-html-parser';
 
-// TODO: to refactor this workaround
-export const dynamicViteAssetImport = (
-  imageFileName: string,
-  config?: { raw: boolean } | undefined
-) => {
-  const filename = path.parse(imageFileName);
-  const name = filename.name;
-  const ext = filename.ext;
-  const raw = config?.raw;
-  switch (ext) {
-    case '.webp':
-      return import(`../assets/${name}.webp`);
-    case '.jpg':
-      return import(`../assets/${name}.jpg`);
-    case '.png':
-      return import(`../assets/${name}.png`);
-    case '.svg':
-      if (raw) {
-        return import(`../assets/${name}.svg?raw`);
-      }
-      return import(`../assets/${name}.svg`);
-    case '.gif':
-      return import(`../assets/${name}.gif`);
-    case '.avif':
-      return import(`../assets/${name}.avif`);
-    case '.jpeg':
-      return import(`../assets/${name}.jpeg`);
-    default:
-      return import(`../assets/${name}.jpg`);
-  }
+export const getSVG = (name: string) => {
+	// TODO: might need to find diffrent strategy to get icons from assets
+	const filepath = `../assets/icons/${name}.svg`;
+	const files = import.meta.glob<string>('../assets/icons/**/*.svg', {
+		as: 'raw',
+		eager: true,
+	});
+
+	if (!(filepath in files)) {
+		throw new Error(`${filepath} not found`);
+	}
+
+	const root = parse(files[filepath]);
+	const svg = root.querySelector('svg');
+	return {
+		attributes: svg?.attributes,
+		innerHTML: svg?.innerHTML,
+	};
+};
+
+// TODO: refactor this to be more generic but specific to the use case, need to give the hint which item can be picked
+export const pick = <T>(obj: T | undefined, keys: Array<keyof T>) => {
+	if (!obj) return {};
+	return keys.reduce((acc, key) => {
+		if (obj[key]) {
+			acc[key] = obj[key];
+		}
+		return acc;
+	}, {} as T);
 };

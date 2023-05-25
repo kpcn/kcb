@@ -1,3 +1,1 @@
 ## 📝 KC's Blog
-
-- Astro
