@@ -1,0 +1,46 @@
+---
+title: 'Opinions of the tools'
+publishedAt: '2022-04-10'
+summary: 'In software development, a tool can be anything that can be used to create, automate or simplify a task.'
+excerpt: 'When we categorize tools, usually, we have been thinking of two main categories for the tools: opinionated and unopinionated. An opinionated tool comes with specific conventions and pre-configured settings ...'
+image:
+  provider: 'local'
+  config:
+    url: '/images/tools.webp'
+    alt: "Leather artisan's work bench"
+    name: 'Alexander Kirov'
+    link: 'https://unsplash.com/photos/eM-gOy8AiQk'
+tags:
+  - Tooling
+  - DX
+---
+
+[According to Wikipedia](https://en.wikipedia.org/wiki/Tool#:~:text=A%20tool%20is%20an%20object,them%20accomplish%20a%20particular%20task.), the most fundamental definition for a tool is an object that can extend an individual's ability to modify features of the surrounding environment or help them accomplish a particular task. That's the one million thousand-foot view. So we still need to define some detail in the software development context. In software development, a tool can be anything that can be used to create, automate or simplify a task. That definition is still the very generic definition for which we are using today, such as the things like libraries & frameworks. But, generally, it's still valid for the entire software development world. So now we know the basic definition of a tool and the very generic scope of what a tool can give automation and simplification. These two things are easy to say and, in reality, hard to implement in different contexts.
+
+> [What do we want from our tools?](https://www.ics.uci.edu/~wayne/courses/cs146/Brian-Kernighan-old-ways-2008.pdf)
+> First and foremost is a mechanical advantage: the tool must do some task better than people can, augmenting or replacing our own effort. [*Brian Kernighan*]  
+
+
+The tools of the trade for us in software development have significantly evolved over the years. We may easily count on those things based on some facts, especially with their popularity and industry standards. But there may be more in the wild that is far away to get more developer mindshare. And also another thing we need to consider is industry standards that are constantly evolving.
+
+When we categorize tools, usually, we've been thinking of two main categories for the tools: opinionated and unopinionated. An opinionated tool comes with specific conventions and pre-configured settings, while an unopinionated tool is more flexible and allows user to make their own choices. Although we say the different directions of flexibility and rigidness, we still can gain a small amount of opinion from the unopinionated tools. You may think I am too optimistic about that. Not only me but there's also [someone who has the same view as me.](https://itnext.io/un-opinionated-vs-opinionated-within-frameworks-f6ceb88a21a2) The two categories can be changed to "more opinionated and less opinionated" based on how many utilities they provide and enforce upon its user. I like his assumption personally.
+
+#### Between the tools and us
+
+In this article, I want to give an example of some frontend web development-related tools rather than an entire software development. When we think about frontend tooling, there are many things we can classify. Some common types we can quickly think of are frameworks, build tools, testing tools, performance tools, linters and code editors, etc. By automating and simplifying tasks, we can get some benefits such as productivity, code quality, better performance, etc. But, on the other hand, we can get some side effects, such as high complexity and low flexibility, because of some new dependencies and constraints from our tools.
+
+When we use tools, the tools invariably enforce us to do the way we need to do or the way we need to think, more or less. So there's a simple answer: we must follow our chosen tool's way of doing or thinking. In some edge cases, we might need to break the rule for the sake of some other demands. Typically, we need to. It is just nothing strange, and if we want to use this thing, we have to follow a set of rules & constraints or ways of doing it to achieve by using that thing. But we should pay attention to the concept behind it. Those are also some form of opinions they're giving us.
+
+To get a bigger picture, let's think about some frameworks. For example, generally, on today's javascript meta frameworks, they can bring opinions such as [web rendering patterns](https://www.patterns.dev/posts) such as SSG, SSR, and ISR. But, far behind those things, they utilized the techniques such as hydration, progressive hydration, selective hydration, streaming, resumability, etc. So from that example, let's think about hydration. It is just a technique; the process of using client-side javascript to add application state and interactivity to sever-rendered HTML. When using meta frameworks like Next.js, we need to understand that fundamental. To use Qwik, we need to understand the [resumability concept](https://qwik.builder.io/docs/concepts/resumable/). These two scenarios show us that tools enforce how we need to think when we use them. Anyway, these innovative approaches showed us valuable techniques to achieve what we need for our requirements. Nonetheless, our responsibility is to fit our requirements and the tool perfectly as much as possible.
+
+We should also have one thing to keep in mind, the opinions and use cases of the tools are meshing up one tool over another. For example, SSG is the concept Jekyll brought us a decade ago. Before that, Wikipedia had its [homegrown SSG](https://en.wikipedia.org/wiki/Static_site_generator), using markdown to serve static articles. And also, based on usage and popularity, we can see Vite is one of the excellent frontend tools, and it can give opinions based on the unopinionated Rollup module bundler.
+
+#### Experience in using the tool
+
+We choose, then we use after that, we can get mechanical advantage from our tools. But there's a thing that still needs to consider for using the tools. While we're using the tools, some tools give us an experience that is hard to adapt to their concepts and dependencies, even for experienced developers for the first time. But many developers can quickly adapt some tools with low barrier entry. That's why most frameworks or tools try to reduce low-barrier entry and improve high usability.
+
+Organizations and some brilliant people are trying to solve the performance problems of the web to gain a better user experience. In the meantime, they are solving the problem of developer experience too. After easiness of using one framework or tool is not enough to indicate good developer experience. We still need to consider some other facts about efficiency, such as optimizing workflows and automation for repetitive tasks that eliminate the process we need to do manually. Focus on writing code instead. Some other things are flexibility for customization that will be helpful for customizability and interoperability that has to work well with other tools in the related context. And also, vendor lock-in is one of the essential things in today's mesh-up world. We need to consider these things when choosing or adapting the tool.
+
+From an organizational perspective, we might need [other measures](https://developerexperience.io/articles/good-developer-experience) to get good developer experience. When the trade-off kicked in, experience for the usage was affected too. As long as higher complexity and lower flexibility are alongside the tool's usage, the degree of experience will also be directly or indirectly involved. Organizations put good default options in their tool for us to give a better developer experience. When good default options of the tool are insufficient, we may tinker with some related parts. After that, we might get a bit of a higher degree for our experience from that usage. It is just like a journey.
+
+Let's wrap up, the tools are evolving, and the opinions have been coming along that way, and they're meshing up. So we, developers, are travelling the journey under the term, the tools of the trade. Even in the future, when we get very accurate AGI, one idea can still exist. It is "one size does not fit all".
