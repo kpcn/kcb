@@ -1,8 +1,8 @@
 ---
-title: 'Post 01'
-publishedAt: '2022-09-12'
-summary: 'Eu sint esse aute eiusmod officia eu ut sit dolor.'
-excerpt: 'Ad sit irure voluptate culpa ea exercitation do pariatur commodo qui amet cillum minim.Esse est commodo fugiat esse cupidatat excepteur consequat excepteur fugiat velit sint mollit...'
+title: 'Proactive flags, the directives for the Link'
+publishedAt: '2022-01-15'
+summary: 'The resource hints for the HTML Link element that can enable to make pre-processing the things for better web performance.'
+excerpt: 'Loading resources is not an easy task. However, when we talk about web performance today, no one can ignore resource hints that support the HTML link to make it shinier. Generally speaking, these relationship...'
 image:
   provider: 'local'
   config:
@@ -73,7 +73,7 @@ Link: <https://example.com/styles.css>; rel=preload; as=style;
 <link rel="preload" href="styles.css" as="style" />
 ```
 
-#### Moulde preloading
+#### Module preloading
 
 The `modulepreload` hint provides a way to proactively fetch a module script and its dependencies and store them in the document's module map for later evaluation. It also needs to specify the `as` attribute in a different context, but the default is `script`. Generally, `modulerepload` and `preload` are very similar. Still, in detail, they have [different processing](https://github.com/whatwg/fetch/issues/486#issuecomment-282044172) models of their own, such as an indicator for the `as` attribute has it changed, it doesn't re-fetch a resource while `preload` has prefetching.
 
