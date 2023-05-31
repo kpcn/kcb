@@ -1,17 +1,17 @@
 ---
 import { SITE_DESCRIPTION } from '@utils/meta';
-import Avatar from './Avatar.astro';
 import SocialLinks from './SocialLinks.astro';
+import Avatar from './Avatar.astro';
 ---
 
 <div class="grid-bg flex w-full flex-col justify-end">
-  <div class="flex flex-col space-y-5 py-8 lg:mb-20 xl:mb-28 2xl:mb-36">
-    <Avatar name="KC" />
-    <p
-      class="px-6 text-center font-dacingscript text-xl font-medium text-slate-800 dark:text-white"
-    >
-      {SITE_DESCRIPTION}
-    </p>
-    <SocialLinks />
-  </div>
+	<div class="flex flex-col space-y-5 py-8 lg:mb-20 xl:mb-28 2xl:mb-36">
+		<Avatar name="KC" />
+		<p
+			class="px-6 text-center font-dacingscript text-xl font-medium text-slate-800 dark:text-white"
+		>
+			{SITE_DESCRIPTION}
+		</p>
+		<SocialLinks />
+	</div>
 </div>

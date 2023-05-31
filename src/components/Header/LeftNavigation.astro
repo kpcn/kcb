@@ -2,49 +2,45 @@
 import PopoverFilters from './PopoverFilters.astro';
 import Icon from '@components/Icon.astro';
 
-import {
-	getTagName,
-	isBlogRelatedUrl,
-	isTagsUrl,
-	isBlogUrl,
-} from '@utils/url';
+import { getTagName, isBlogRelatedUrl, isTagsUrl, isBlogUrl } from '@utils/url';
 
 const pathname = new URL(Astro.request.url).pathname;
 const name = getTagName(pathname);
 ---
 
-{
-	isBlogRelatedUrl(pathname) ? (
-		<>
-			<button
-				id="back-btn"
-				class={`antialiased text-gray-800 dark:text-slate-50 ${
-					!isBlogUrl(pathname) ? 'hidden xs:block' : 'block'
-				} `}
-			>
-				<Icon icon="back" class="w-6 h-6 md:w-7 md:h-7" />
-			</button>
-			{isTagsUrl(pathname) ? (
-				<>
-					<PopoverFilters name={name} />
-					<span class="text-md md:text-lg font-light tracking-wide uppercase dark:text-slate-50">
-						Posts
-					</span>
-				</>
-			) : (
-				<PopoverFilters name="Tags" />
-			)}
-		</>
-	) : (
-		<>
-			<PopoverFilters name="All" />
-			<span class="text-md md:text-lg font-light tracking-wide uppercase dark:text-slate-50">
-				Posts
-			</span>
-		</>
-	)
-}
-
+<div class="flex md:space-x-2">
+	{
+		isBlogRelatedUrl(pathname) ? (
+			<>
+				<button
+					id="back-btn"
+					class={`antialiased text-gray-800 dark:text-slate-50 ${
+						!isBlogUrl(pathname) ? 'hidden xs:block' : 'block'
+					} `}
+				>
+					<Icon icon="back" class="w-6 h-6 md:w-7 md:h-7" />
+				</button>
+				{isTagsUrl(pathname) ? (
+					<>
+						<PopoverFilters name={name} />
+						<span class="text-md md:text-lg font-light tracking-wide uppercase dark:text-slate-50">
+							Posts
+						</span>
+					</>
+				) : (
+					<PopoverFilters name="Tags" />
+				)}
+			</>
+		) : (
+			<>
+				<PopoverFilters name="All" />
+				<span class="text-md md:text-lg font-light tracking-wide uppercase dark:text-slate-50">
+					Posts
+				</span>
+			</>
+		)
+	}
+</div>
 <script is:inline>
 	document
 		.getElementById('back-btn')
