@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Tags from '@components/Tags/Tags.astro';
-import Icon from '@components/Icon.astro';
 
 import { formatDate } from '@utils/format';
+import { CalendarDays, Clock } from 'lucide-preact';
 
 interface Props {
 	post: CollectionEntry<'blog'>;
@@ -31,7 +31,7 @@ const formattedPublishedDate = formatDate(data?.publishedAt);
 			class="flex items-center justify-between sm:justify-normal sm:space-x-7 py-1 pb-2 sm:pb-4 text-gray-500 dark:text-slate-50"
 		>
 			<div class="flex items-center space-x-1 sm:space-x-2">
-				<Icon icon="calendar" class="w-4 h-4 sm:w-5 sm:h-5" />
+				<CalendarDays class="w-3 h-3 sm:w-4 sm:h-4" />
 				<span
 					class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base"
 				>
@@ -39,7 +39,7 @@ const formattedPublishedDate = formatDate(data?.publishedAt);
 				</span>
 			</div>
 			<div class="flex items-center space-x-1 sm:space-x-2">
-				<Icon icon="clock" class="w-4 h-4 sm:w-5 sm:h-5" />
+				<Clock class="w-3 h-3 sm:w-4 sm:h-4" />
 				<span
 					class="italic text-sm tracking-tighter sm:tracking-tight md:tracking-normal md:text-base"
 				>

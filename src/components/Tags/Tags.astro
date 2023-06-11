@@ -1,6 +1,6 @@
 ---
-import Icon from '@components/Icon.astro';
 import Tag from './Tag.astro';
+import { Tags as TagsIcon } from 'lucide-preact';
 
 interface Props {
   tags: string[];
@@ -10,7 +10,7 @@ const { tags = [] } = Astro.props;
 ---
 
 <div class="flex items-start py-1 space-x-1">
-  <Icon icon="price-tag" class="w-5 h-5 mt-1 text-gray-500 dark:text-slate-50" />
+  <TagsIcon class="w-5 h-5 mt-1 text-gray-500 dark:text-slate-50" />
   <div class="flex flex-wrap items-center">
     {
       tags.map((tag) => (
