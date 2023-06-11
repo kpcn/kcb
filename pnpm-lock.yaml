@@ -49,6 +49,9 @@ dependencies:
   astro-seo:
     specifier: 0.7.2
     version: 0.7.2
+  lucide-preact:
+    specifier: 0.241.0
+    version: 0.241.0(preact@10.15.1)
   mdast-util-to-string:
     specifier: 3.2.0
     version: 3.2.0
@@ -58,9 +61,6 @@ dependencies:
   preact:
     specifier: ^10.6.5
     version: 10.15.1
-  react-icons:
-    specifier: 4.9.0
-    version: 4.9.0(react@18.2.0)
   reading-time:
     specifier: 1.5.0
     version: 1.5.0
@@ -4368,6 +4368,14 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /lucide-preact@0.241.0(preact@10.15.1):
+    resolution: {integrity: sha512-sp7XD6yKGumV2oDWMwHP66FV/yOP3Tl8r+UH837O7RMMxsAGDvgyO11TgtgXfQ6tu+kjHBMTqUDB8634A5bdYw==}
+    peerDependencies:
+      preact: ^10.5.13
+    dependencies:
+      preact: 10.15.1
+    dev: false
+
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -5760,14 +5768,6 @@ packages:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
-    dev: false
-
-  /react-icons@4.9.0(react@18.2.0):
-    resolution: {integrity: sha512-ijUnFr//ycebOqujtqtV9PFS7JjhWg0QU6ykURVHuL4cbofvRCf3f6GMn9+fBktEFQOIVZnuAYLZdiyadRQRFg==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

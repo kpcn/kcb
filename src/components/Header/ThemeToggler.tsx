@@ -1,6 +1,5 @@
 import { effect, useSignal } from '@preact/signals';
-import { IoMdBulb } from 'react-icons/io';
-import { HiOutlineLightBulb } from 'react-icons/hi';
+import { Lightbulb, LightbulbOff } from 'lucide-preact';
 
 const ThemeToggler = () => {
 	const STORAGE_KEY = '@kcb-theme';
@@ -22,14 +21,14 @@ const ThemeToggler = () => {
 	};
 
 	return (
-		<button class="antialiased flex items-center pt-1" onClick={onThemeChange}>
+		<button class="antialiased flex items-center" onClick={onThemeChange}>
 			{theme.value === 'light' ? (
 				<i class="w-5 h-5 rotate-180">
-					<HiOutlineLightBulb size="22" />
+					<Lightbulb size={18} />
 				</i>
 			) : (
 				<i class="dark:text-slate-50 rotate-180">
-					<IoMdBulb size="22" />
+					<LightbulbOff size={18} />
 				</i>
 			)}
 		</button>
