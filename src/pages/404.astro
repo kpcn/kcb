@@ -1,6 +1,6 @@
 ---
 import PageLayout from '@layouts/Page.astro';
-import Icon from '@components/Icon.astro';
+import { Undo2 } from 'lucide-preact';
 ---
 
 <PageLayout>
@@ -35,10 +35,7 @@ import Icon from '@components/Icon.astro';
 			href="/"
 			class="flex items-center space-x-3 rounded-lg bg-slate-300 px-6 py-2 text-gray-300 dark:bg-slate-800"
 		>
-			<Icon
-				icon="arrow-turn-left"
-				class="h-7 w-7 text-slate-700 dark:text-white"
-			/>
+			<Undo2 class="h-7 w-7 text-slate-700 dark:text-white" />
 			<span class="text-slate-700 dark:text-white">Back to Home</span>
 		</a>
 	</div>

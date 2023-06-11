@@ -1,7 +1,7 @@
 ---
-import Icon from '@components/Icon.astro';
 import Tag from '@components/Tags/Tag.astro';
 import { getAllTags } from '@utils/content';
+import { X } from 'lucide-preact';
 
 export interface Props {
 	name?: string;
@@ -30,7 +30,7 @@ const { name = '' } = Astro.props;
 				id="popover-close-btn"
 				class="text-gray-500 hover:text-gray-700 dark:text-slate-50"
 			>
-				<Icon icon="close" class="w-6 h-6 dark:text-slate-50" />
+				<X class="w-6 h-6 dark:text-slate-50"/>
 			</button>
 		</div>
 		<div class="px-3 py-2">

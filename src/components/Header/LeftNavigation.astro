@@ -1,8 +1,8 @@
 ---
 import PopoverFilters from './PopoverFilters.astro';
-import Icon from '@components/Icon.astro';
 
 import { getTagName, isBlogRelatedUrl, isTagsUrl, isBlogUrl } from '@utils/url';
+import { ArrowLeftCircle } from 'lucide-preact';
 
 const pathname = new URL(Astro.request.url).pathname;
 const name = getTagName(pathname);
@@ -18,7 +18,7 @@ const name = getTagName(pathname);
 						!isBlogUrl(pathname) ? 'hidden xs:block' : 'block'
 					} `}
 				>
-					<Icon icon="back" class="w-6 h-6 md:w-7 md:h-7" />
+					<ArrowLeftCircle class="w-4 h-4 md:w-5 md:h-5" />
 				</button>
 				{isTagsUrl(pathname) ? (
 					<>
@@ -42,7 +42,7 @@ const name = getTagName(pathname);
 	}
 </div>
 <script is:inline>
-	document
-		.getElementById('back-btn')
-		?.addEventListener('click', () => window.history.go(-1));
+document
+	.getElementById('back-btn')
+	?.addEventListener('click', () => window.history.go(-1));
 </script>
