@@ -1,16 +1,18 @@
 ---
-import ThemeToggler from './ThemeToggler.astro';
+import ThemeToggler from './ThemeToggler';
 ---
 
-<div class="flex items-center">
-	<a
-		role="navigation"
-		href="/"
-		class="text-md md:text-lg tracking-wide font-light uppercase dark:text-slate-50"
-	>
-		Home</a
-	>
-</div>
-<div class="flex items-center text-lg font-light tracking-wide uppercase">
-	<ThemeToggler />
+<div class="flex items-center space-x-1 md:space-x-3">
+	<div class="flex items-center">
+		<a
+			role="navigation"
+			href="/"
+			class="text-md md:text-lg tracking-wide font-light uppercase dark:text-slate-50"
+		>
+			Home</a
+		>
+	</div>
+	<div class="flex items-center text-lg font-light tracking-wide uppercase">
+		<ThemeToggler client:visible />
+	</div>
 </div>

@@ -3,16 +3,34 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@styles/*": ["src/styles/*"],
-      "@content/*": ["src/content/*"],
-      "@utils/*": ["src/utils/*"],
-      "@plugins/*": ["src/plugins/*"],
+      "@src/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@content/*": [
+        "src/content/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@plugins/*": [
+        "src/plugins/*"
+      ]
     },
     "strictNullChecks": true,
     "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
-  "types": ["@astrojs/image/client"],
+  "types": [
+    "@astrojs/image/client"
+  ]
 }
