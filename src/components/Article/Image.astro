@@ -9,7 +9,6 @@ export type ImageProvider = z.infer<typeof imageProvider>;
 interface Props {
 	image?: ImageProvider;
 }
-
 const { image } = Astro.props;
 const { provider, config } = image || {};
 ---
